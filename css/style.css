@@ -181,7 +181,7 @@ ul { list-style: none; }
   text-align: center;
   position: relative;
   overflow: hidden;
-  background: url('images/hero-bg.png') center center / cover no-repeat, var(--black);
+  background: url('../hero-bg.png') center center / cover no-repeat, var(--black);
 }
 .hero::before {
   content: '';
@@ -1580,7 +1580,7 @@ section { padding: 6rem 0; }
   overflow: hidden;
   background:
     linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
-    url('images/hero-bg.png') center/cover no-repeat,
+    url('../hero-bg.png') center/cover no-repeat,
     var(--black);
 }
 
@@ -1604,11 +1604,11 @@ section { padding: 6rem 0; }
 
 /* ── ZONE IMAGES via CSS ── */
 .zone-card { background-image: none; }
-.zone-card:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('images/zone-lounge.png'); background-size: cover; background-position: center; }
-.zone-card:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url('images/zone-studio.jpg'); background-size: cover; background-position: center; }
-.zone-card:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url('images/zone-bureau-day.png'); background-size: cover; background-position: center; }
-.zone-card:nth-child(4) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('images/zone-ambiance-night.jpg'); background-size: cover; background-position: center; }
-.zone-card:nth-child(5) { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url('images/zone-podcast-2.png'); background-size: cover; background-position: center; }
+.zone-card:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('../zone-lounge.png'); background-size: cover; background-position: center; }
+.zone-card:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url('../zone-studio.jpg'); background-size: cover; background-position: center; }
+.zone-card:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url('../zone-bureau-day.png'); background-size: cover; background-position: center; }
+.zone-card:nth-child(4) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('../zone-ambiance-night.jpg'); background-size: cover; background-position: center; }
+.zone-card:nth-child(5) { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url('../zone-podcast-2.png'); background-size: cover; background-position: center; }
 
 /* ── ZONE CARD TEXT ALWAYS VISIBLE ── */
 .zone-card h3, .zone-card p, .zone-tags span { position: relative; z-index: 2; }
@@ -1616,11 +1616,11 @@ section { padding: 6rem 0; }
 .zone-icon { z-index: 2; position: relative; }
 
 /* ── ZONE IMAGES VIA CSS ── */
-.zones-grid .zone-card:nth-child(1) { background-image: linear-gradient(rgba(8,8,8,0.72),rgba(8,8,8,0.72)), url('images/zone-lounge.png'); background-size:cover; background-position:center; }
-.zones-grid .zone-card:nth-child(2) { background-image: linear-gradient(rgba(8,8,8,0.68),rgba(8,8,8,0.68)), url('images/zone-studio.jpg'); background-size:cover; background-position:center; }
-.zones-grid .zone-card:nth-child(3) { background-image: linear-gradient(rgba(8,8,8,0.72),rgba(8,8,8,0.72)), url('images/zone-bureau-day.png'); background-size:cover; background-position:center; }
-.zones-grid .zone-card:nth-child(4) { background-image: linear-gradient(rgba(8,8,8,0.68),rgba(8,8,8,0.68)), url('images/zone-ambiance-night.jpg'); background-size:cover; background-position:center; }
-.zones-grid .zone-card:nth-child(5) { background-image: linear-gradient(rgba(8,8,8,0.70),rgba(8,8,8,0.70)), url('images/zone-podcast-2.png'); background-size:cover; background-position:center; }
+.zones-grid .zone-card:nth-child(1) { background-image: linear-gradient(rgba(8,8,8,0.72),rgba(8,8,8,0.72)), url('../zone-lounge.png'); background-size:cover; background-position:center; }
+.zones-grid .zone-card:nth-child(2) { background-image: linear-gradient(rgba(8,8,8,0.68),rgba(8,8,8,0.68)), url('../zone-studio.jpg'); background-size:cover; background-position:center; }
+.zones-grid .zone-card:nth-child(3) { background-image: linear-gradient(rgba(8,8,8,0.72),rgba(8,8,8,0.72)), url('../zone-bureau-day.png'); background-size:cover; background-position:center; }
+.zones-grid .zone-card:nth-child(4) { background-image: linear-gradient(rgba(8,8,8,0.68),rgba(8,8,8,0.68)), url('../zone-ambiance-night.jpg'); background-size:cover; background-position:center; }
+.zones-grid .zone-card:nth-child(5) { background-image: linear-gradient(rgba(8,8,8,0.70),rgba(8,8,8,0.70)), url('../zone-podcast-2.png'); background-size:cover; background-position:center; }
 
 /* ═══════════════════════════════════════
    RESPONSIVE
