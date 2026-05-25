@@ -1707,3 +1707,169 @@ section { padding: 6rem 0; }
   .hero-title-sub { font-size: 1.5rem; }
   .section-title { font-size: 1.6rem; }
 }
+
+/* ═══════════════════════════════════════════════
+   ABOUT — AVEC VRAIE PHOTO
+═══════════════════════════════════════════════ */
+.about-photo-wrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  border: 1px solid var(--gold-border);
+}
+.about-photo {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.about-photo-wrap:hover .about-photo { transform: scale(1.04); }
+.about-photo-badge {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(8,8,8,0.88);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 12px 18px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+.about-photo-badge .stat-num { display: block; font-family: var(--font-title); font-size: 1.6rem; color: var(--gold); line-height: 1; }
+.about-photo-badge .stat-label { font-size: 0.6rem; letter-spacing: 0.2em; color: var(--white-dim); }
+.stats-mini { margin-top: 16px; }
+
+/* ═══════════════════════════════════════════════
+   ZONES — PHOTO CARDS
+═══════════════════════════════════════════════ */
+.zones-grid .zone-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+  /* Remove old background-image defaults so <img> shows */
+  background-image: none !important;
+}
+.zones-grid .zone-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+  position: absolute;
+  inset: 0;
+}
+.zones-grid .zone-card:hover img { transform: scale(1.07); }
+.zone-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.3) 55%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px 20px;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+.zones-grid .zone-card:hover .zone-overlay {
+  background: linear-gradient(to top, rgba(8,8,8,0.98) 0%, rgba(8,8,8,0.5) 60%, rgba(8,8,8,0.1) 100%);
+}
+.zone-overlay .zone-num {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  margin-bottom: 6px;
+  display: block;
+}
+.zone-overlay h3 {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  color: var(--white);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.zone-overlay h3 em { color: var(--gold); font-style: normal; }
+.zone-overlay p {
+  font-size: 0.8rem;
+  color: var(--white-dim);
+  line-height: 1.5;
+  margin-bottom: 12px;
+  /* Hidden by default, shown on hover */
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.zones-grid .zone-card:hover .zone-overlay p {
+  opacity: 1;
+  transform: translateY(0);
+}
+.zone-overlay .zone-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.zone-overlay .zone-tags span {
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+
+/* Featured zone — larger */
+.zones-grid .zone-card.featured {
+  grid-column: span 1;
+}
+@media (min-width: 768px) {
+  .zones-grid .zone-card.featured {
+    grid-column: span 2;
+  }
+  .zones-grid .zone-card.featured img { object-position: center 30%; }
+}
+
+/* ═══════════════════════════════════════════════
+   GALLERY STRIP — DÉFILANT AUTOMATIQUE
+═══════════════════════════════════════════════ */
+.gallery-strip {
+  overflow: hidden;
+  padding: 40px 0;
+  background: var(--navy-2);
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+}
+.gallery-strip-inner {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: galleryScroll 30s linear infinite;
+}
+.gallery-strip:hover .gallery-strip-inner {
+  animation-play-state: paused;
+}
+.gallery-strip-inner img {
+  height: 220px;
+  width: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid var(--gold-border);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  flex-shrink: 0;
+}
+.gallery-strip-inner img:hover {
+  transform: scale(1.04);
+  border-color: var(--gold);
+  box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+  z-index: 1;
+  position: relative;
+}
+@keyframes galleryScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (max-width: 600px) {
+  .gallery-strip-inner img { height: 150px; }
+  .about-photo { height: 260px; }
+}
