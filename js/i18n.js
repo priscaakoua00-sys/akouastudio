@@ -8,7 +8,7 @@ const translations = {
   nl: {
     nav_sub: "Studio · Roosendaal",
     nav_studio: "Studio", nav_tarieven: "Tarieven", nav_services: "Services",
-    nav_reviews: "Reviews", nav_abonnement: "Abonnement", nav_faq: "FAQ", nav_boeken: "Boeken",
+    nav_reviews: "Reviews", nav_abonnement: "Abonnement", nav_faq: "FAQ", nav_renaissance: "Renaissance", nav_boeken: "Boeken",
     nav_community: "Community",
     nav_account: "Mijn Account",
     hero_badge: "PREMIUM STUDIO · ROOSENDAAL",
@@ -217,7 +217,7 @@ const translations = {
   en: {
     nav_sub: "Studio · Roosendaal",
     nav_studio: "Studio", nav_tarieven: "Pricing", nav_services: "Services",
-    nav_reviews: "Reviews", nav_abonnement: "Membership", nav_faq: "FAQ", nav_boeken: "Book",
+    nav_reviews: "Reviews", nav_abonnement: "Membership", nav_faq: "FAQ", nav_renaissance: "Renaissance", nav_boeken: "Book",
     nav_community: "Community",
     nav_account: "My Account",
     hero_badge: "PREMIUM STUDIO · ROOSENDAAL",
@@ -425,7 +425,7 @@ const translations = {
   fr: {
     nav_sub: "Studio · Roosendaal",
     nav_studio: "Studio", nav_tarieven: "Tarifs", nav_services: "Services",
-    nav_reviews: "Avis", nav_abonnement: "Abonnement", nav_faq: "FAQ", nav_boeken: "Réserver",
+    nav_reviews: "Avis", nav_abonnement: "Abonnement", nav_faq: "FAQ", nav_renaissance: "Renaissance", nav_boeken: "Réserver",
     nav_community: "Communauté",
     nav_account: "Mon Compte",
     hero_badge: "STUDIO PREMIUM · ROOSENDAAL",
@@ -633,7 +633,7 @@ const translations = {
   es: {
     nav_sub: "Studio · Roosendaal",
     nav_studio: "Estudio", nav_tarieven: "Precios", nav_services: "Servicios",
-    nav_reviews: "Reseñas", nav_abonnement: "Membresía", nav_faq: "FAQ", nav_boeken: "Reservar",
+    nav_reviews: "Reseñas", nav_abonnement: "Membresía", nav_faq: "FAQ", nav_renaissance: "Renaissance", nav_boeken: "Reservar",
     nav_community: "Comunidad",
     nav_account: "Mi Cuenta",
     hero_badge: "ESTUDIO PREMIUM · ROOSENDAAL",

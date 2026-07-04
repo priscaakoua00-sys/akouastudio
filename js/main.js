@@ -158,7 +158,7 @@ async function submitBooking() {
     message: msg
   });
 
-  // 2. Send email to Akoua
+  // 2. Send email to Akoua (fire in background, never blocks the redirect)
   const subject = encodeURIComponent(`🌟 NIEUWE RESERVERING — ${currentPackage.name} — Akoua Studio`);
   const body = encodeURIComponent(
     `NIEUWE RESERVERING — AKOUA STUDIO\n\n` +
@@ -171,31 +171,35 @@ async function submitBooking() {
     (addons.length ? `Add-ons: ${addons.join(', ')}\n` : '') +
     (msg ? `\nProject: ${msg}` : '')
   );
-  // Send email notification
   const mailLink = `mailto:akouastudio@gmail.com?subject=${subject}&body=${body}`;
-  const mailWindow = window.open(mailLink, '_blank');
-  if (!mailWindow) window.location.href = mailLink;
+  try {
+    const hiddenFrame = document.createElement('iframe');
+    hiddenFrame.style.display = 'none';
+    hiddenFrame.src = mailLink;
+    document.body.appendChild(hiddenFrame);
+    setTimeout(() => hiddenFrame.remove(), 3000);
+  } catch(e) { console.log('Mail trigger error:', e); }
 
-  // 2. Redirect to Mollie payment link
-  const mollieUrl = mollieLinks[currentPackage.name];
-  setTimeout(() => {
-    if (mollieUrl) {
-      window.open(mollieUrl, '_blank');
-    }
-  }, 1500);
-
-  // 3. Show success message
+  // 3. Show success message immediately
   closeBooking();
   showSuccess(name);
+
+  // 4. Redirect to Mollie payment link IMMEDIATELY (same tab, synchronous with the click)
+  //    Delayed/new-tab redirects get silently blocked by mobile browsers — this was
+  //    very likely causing real bookings to be lost without anyone noticing.
+  const mollieUrl = mollieLinks[currentPackage.name];
+  if (mollieUrl) {
+    window.location.href = mollieUrl;
+  }
 }
 
 function showSuccess(name) {
   const t = translations[currentLang];
   const msgs = {
-    nl: `Beste ${name}, welkom in de wereld van Akoua Studio ✨\n\nJouw reserveringsaanvraag is verzonden via WhatsApp. Wij bevestigen zo snel mogelijk en kijken ernaar uit jou te verwelkomen.`,
-    en: `Dear ${name}, welcome to the world of Akoua Studio ✨\n\nYour booking request has been sent via WhatsApp. We will confirm as soon as possible and look forward to welcoming you.`,
-    fr: `Chère/Cher ${name}, bienvenue dans le monde d'Akoua Studio ✨\n\nVotre demande de réservation a été envoyée via WhatsApp. Nous confirmerons dès que possible et avons hâte de vous accueillir.`,
-    es: `Estimado/a ${name}, bienvenido/a al mundo de Akoua Studio ✨\n\nTu solicitud de reserva ha sido enviada por WhatsApp. Confirmaremos lo antes posible y esperamos darte la bienvenida.`
+    nl: `Beste ${name}, welkom in de wereld van Akoua Studio ✨\n\nJe wordt nu direct doorgestuurd naar de beveiligde betaalpagina om je reservering af te ronden.`,
+    en: `Dear ${name}, welcome to the world of Akoua Studio ✨\n\nYou're now being redirected to the secure payment page to complete your booking.`,
+    fr: `Chère/Cher ${name}, bienvenue dans le monde d'Akoua Studio ✨\n\nVous allez être redirigé(e) directement vers la page de paiement sécurisée pour finaliser votre réservation.`,
+    es: `Estimado/a ${name}, bienvenido/a al mundo de Akoua Studio ✨\n\nSerás redirigido/a ahora mismo a la página de pago segura para completar tu reserva.`
   };
   document.getElementById('success-msg').textContent = msgs[currentLang] || msgs.nl;
   document.getElementById('success-overlay').classList.add('active');
