@@ -90,7 +90,7 @@ ul { list-style: none; }
 }
 .navbar.scrolled {
   top: 0;
-  background: rgba(10,10,20,0.97);
+  background: rgba(10,10,10,0.97);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--gold-border);
   box-shadow: 0 4px 40px rgba(0,0,0,0.5);
@@ -616,7 +616,7 @@ section { padding: 6rem 0; }
 }
 .zone-card:hover { background: var(--navy-4); }
 .zone-card.featured {
-  background: linear-gradient(135deg, var(--navy-4) 0%, #1d2840 100%);
+  background: linear-gradient(135deg, var(--navy-4) 0%, #1a1408 100%);
   border: 1px solid var(--gold-border);
 }
 .zone-num {
