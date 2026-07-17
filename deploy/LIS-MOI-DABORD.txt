@@ -1,0 +1,32 @@
+AKOUA STUDIO — Fichiers mis à jour
+===================================
+
+1) SUR GITHUB, SUPPRIME D'ABORD CES 14 ANCIENS FICHIERS .png
+   (clique sur chaque fichier dans le repo -> icône poubelle -> commit) :
+   - hero-bg.png
+   - logo-gold.png
+   - studio-collage-1.png
+   - studio-collage-2.png
+   - studio-overview.png
+   - zone-bureau-3.png
+   - zone-bureau-day.png
+   - zone-detail.png
+   - zone-events.png
+   - zone-lounge-detail.png
+   - zone-lounge.png
+   - zone-meeting.png
+   - zone-podcast-1.png
+   - zone-podcast-2.png
+
+2) ENSUITE, GLISSE-DÉPOSE TOUT LE CONTENU DE CE DOSSIER
+   (garde bien la structure : css/style.css et js/*.js dans leurs sous-dossiers)
+   sur la page GitHub ("uploading an existing file"), puis clique "Commit changes".
+
+3) Netlify redéploiera automatiquement le site en 1-2 minutes.
+
+Fichiers inclus ici :
+- index.html (modifié)
+- css/style.css (modifié)
+- js/main.js (modifié)
+- js/i18n.js (modifié)
+- 14 nouvelles photos .jpg (remplacent les anciennes .png, chargent beaucoup plus vite)
