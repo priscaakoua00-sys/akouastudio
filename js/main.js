@@ -259,7 +259,7 @@ async function submitAbo() {
     });
   }
 
-  // Send email to Akoua
+  // 2. Send email to Akoua (fire in background, never blocks the redirect)
   const subject = encodeURIComponent(`🌟 NIEUW ABONNEMENT — ${currentAbo.name} — Akoua Studio`);
   const body = encodeURIComponent(
     `NIEUW ABONNEMENT — AKOUA STUDIO\n\n` +
@@ -269,24 +269,30 @@ async function submitAbo() {
     `Tel: ${tel}\n` +
     (msg ? `\nProject/doelen: ${msg}` : '')
   );
-  // Send email notification
   const mailLink = `mailto:akouastudio@gmail.com?subject=${subject}&body=${body}`;
-  const mailWindow = window.open(mailLink, '_blank');
-  if (!mailWindow) window.location.href = mailLink;
+  try {
+    const hiddenFrame = document.createElement('iframe');
+    hiddenFrame.style.display = 'none';
+    hiddenFrame.src = mailLink;
+    document.body.appendChild(hiddenFrame);
+    setTimeout(() => hiddenFrame.remove(), 3000);
+  } catch(e) { console.log('Mail trigger error:', e); }
 
-  // Redirect to Mollie
+  // 3. Show success message immediately
+  closeAbo();
+  showSuccess(name);
+
+  // 4. Redirect to Mollie payment link IMMEDIATELY (same tab, synchronous with the click)
+  //    Delayed/new-tab redirects get silently blocked by mobile browsers — this was
+  //    very likely causing real subscriptions to be lost without anyone noticing.
   const mollieAbo = {
     'Pro': 'https://payment-links.mollie.com/payment/K3Z8Qakj5qeLFJBdLA28M',
     'Unlimited': 'https://payment-links.mollie.com/payment/JZbKbnCHAnojC253g2MgS',
   };
-  setTimeout(() => {
-    if (mollieAbo[currentAbo.name]) {
-      window.open(mollieAbo[currentAbo.name], '_blank');
-    }
-  }, 1500);
-
-  closeAbo();
-  showSuccess(name);
+  const mollieUrl = mollieAbo[currentAbo.name];
+  if (mollieUrl) {
+    window.location.href = mollieUrl;
+  }
 }
 
 // ── CHATBOT ──
