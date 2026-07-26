@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Akoua Studio · Premium Creatieve Ruimte · Roosendaal</title>
-  <link rel="icon" type="image/png" href="logo-gold.png">
-  <link rel="apple-touch-icon" href="logo-gold.png">
+  <link rel="icon" type="image/jpeg" href="logo-gold.jpg">
+  <link rel="apple-touch-icon" href="logo-gold.jpg">
   <meta name="description" content="Akoua Studio · Premium privéstudio in Roosendaal. Huur een professionele creatieve ruimte per uur of dag. Fotoshoots, video, podcast, meetings en meer." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,8 +20,6 @@
   gtag('js', new Date());
   gtag('config', 'AW-18139302392');
 </script>
-<link rel="icon" type="image/png" href="logo-gold.png">
-<link rel="apple-touch-icon" href="logo-gold.png">
 
 <style>
 /* Fix horizontal scroll bug */
@@ -117,7 +115,14 @@ html, body {
       <a href="#studio" class="btn-outline-sm" data-i18n="about_btn">Bekijk de Zones</a>
     </div>
     <div class="about-right">
-      <div class="stats-grid">
+      <div class="about-photo-wrap">
+        <img class="about-photo" src="studio-overview.jpg" alt="Akoua Studio interieur" loading="lazy" />
+        <div class="about-photo-badge">
+          <span class="stat-num">5★</span>
+          <span class="stat-label" data-i18n="stat_premium">PREMIUM</span>
+        </div>
+      </div>
+      <div class="stats-grid stats-mini">
         <div class="stat-box">
           <span class="stat-num">5</span>
           <span class="stat-label" data-i18n="stat_zones">CREATIEVE ZONES</span>
@@ -127,12 +132,12 @@ html, body {
           <span class="stat-label" data-i18n="stat_talen">TALEN</span>
         </div>
         <div class="stat-box">
-          <span class="stat-num">5★</span>
-          <span class="stat-label" data-i18n="stat_premium">PREMIUM</span>
-        </div>
-        <div class="stat-box">
           <span class="stat-num">100%</span>
           <span class="stat-label" data-i18n="stat_prive">PRIVÉ</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">6/7</span>
+          <span class="stat-label" data-i18n="stat_dagen">DAGEN OPEN</span>
         </div>
       </div>
     </div>
@@ -198,7 +203,7 @@ html, body {
     <h2 class="section-title center" data-i18n="zones_title">Alles wat je nodig hebt<br/><em>Om te Schitteren</em></h2>
     <div class="zones-grid">
       <div class="zone-card">
-        <img src="zone-lounge.png" alt="Relax Lounge" loading="lazy" />
+        <img src="zone-lounge.jpg" alt="Relax Lounge" loading="lazy" />
         <div class="zone-overlay">
           <span class="zone-num">01</span>
           <h3><span data-i18n="zone_1a">RELAX</span> <em data-i18n="zone_1b">LOUNGE</em></h3>
@@ -234,7 +239,7 @@ html, body {
         </div>
       </div>
       <div class="zone-card">
-        <img src="zone-podcast-2.png" alt="Content Zone" loading="lazy" />
+        <img src="zone-podcast-2.jpg" alt="Content Zone" loading="lazy" />
         <div class="zone-overlay">
           <span class="zone-num">05</span>
           <h3><span data-i18n="zone_5a">CONTENT</span> <em data-i18n="zone_5b">ZONE</em></h3>
@@ -243,37 +248,47 @@ html, body {
         </div>
       </div>
     </div>
+    <div class="related-links">
+      <p>Meer weten over een specifieke zone? Bekijk de uitgebreide gids:</p>
+      <div class="related-grid">
+        <a href="fotostudio-huren.html">Fotostudio huren</a>
+        <a href="videostudio-huren.html">Videostudio huren</a>
+        <a href="podcast-studio-huren.html">Podcaststudio huren</a>
+        <a href="workshopruimte-huren.html">Workshopruimte huren</a>
+        <a href="vergaderruimte-huren.html">Vergaderruimte huren</a>
+      </div>
+    </div>
   </div>
 </section>
 
 
 <section class="gallery-strip">
   <div class="gallery-strip-inner">
-    <img src="studio-collage-1.png" alt="Akoua Studio" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-lounge-detail.png" alt="Lounge detail" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-bureau-day.png" alt="Bureau" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-meeting.png" alt="Meeting" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-events.png" alt="Events" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-detail.png" alt="Detail" loading="lazy" onclick="openLightbox(this)" />
-    <img src="studio-collage-2.png" alt="Akoua Studio 2" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-podcast-1.png" alt="Podcast" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-bureau-3.png" alt="Bureau 3" loading="lazy" onclick="openLightbox(this)" />
-    <img src="studio-overview.png" alt="Overview" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-lounge.png" alt="Lounge" loading="lazy" onclick="openLightbox(this)" />
+    <img src="studio-collage-1.jpg" alt="Akoua Studio" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-lounge-detail.jpg" alt="Lounge detail" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-bureau-day.jpg" alt="Bureau" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-meeting.jpg" alt="Meeting" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-events.jpg" alt="Events" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-detail.jpg" alt="Detail" loading="lazy" onclick="openLightbox(this)" />
+    <img src="studio-collage-2.jpg" alt="Akoua Studio 2" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-podcast-1.jpg" alt="Podcast" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-bureau-3.jpg" alt="Bureau 3" loading="lazy" onclick="openLightbox(this)" />
+    <img src="studio-overview.jpg" alt="Overview" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-lounge.jpg" alt="Lounge" loading="lazy" onclick="openLightbox(this)" />
     <img src="zone-ambiance-night.jpg" alt="Ambiance" loading="lazy" onclick="openLightbox(this)" />
   </div>
   <div class="gallery-strip-inner" aria-hidden="true">
-    <img src="studio-collage-1.png" alt="Akoua Studio" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-lounge-detail.png" alt="Lounge detail" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-bureau-day.png" alt="Bureau" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-meeting.png" alt="Meeting" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-events.png" alt="Events" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-detail.png" alt="Detail" loading="lazy" onclick="openLightbox(this)" />
-    <img src="studio-collage-2.png" alt="Akoua Studio 2" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-podcast-1.png" alt="Podcast" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-bureau-3.png" alt="Bureau 3" loading="lazy" onclick="openLightbox(this)" />
-    <img src="studio-overview.png" alt="Overview" loading="lazy" onclick="openLightbox(this)" />
-    <img src="zone-lounge.png" alt="Lounge" loading="lazy" onclick="openLightbox(this)" />
+    <img src="studio-collage-1.jpg" alt="Akoua Studio" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-lounge-detail.jpg" alt="Lounge detail" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-bureau-day.jpg" alt="Bureau" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-meeting.jpg" alt="Meeting" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-events.jpg" alt="Events" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-detail.jpg" alt="Detail" loading="lazy" onclick="openLightbox(this)" />
+    <img src="studio-collage-2.jpg" alt="Akoua Studio 2" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-podcast-1.jpg" alt="Podcast" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-bureau-3.jpg" alt="Bureau 3" loading="lazy" onclick="openLightbox(this)" />
+    <img src="studio-overview.jpg" alt="Overview" loading="lazy" onclick="openLightbox(this)" />
+    <img src="zone-lounge.jpg" alt="Lounge" loading="lazy" onclick="openLightbox(this)" />
     <img src="zone-ambiance-night.jpg" alt="Ambiance" loading="lazy" onclick="openLightbox(this)" />
   </div>
 </section>
@@ -424,6 +439,12 @@ html, body {
     </div>
     <div class="services-cta">
       <a href="https://wa.me/31627374813" target="_blank" class="btn-gold" data-i18n="serv_cta">Vraag een sessie aan · WhatsApp</a>
+    </div>
+    <div class="related-links">
+      <p>Meer weten over personal branding?</p>
+      <div class="related-grid">
+        <a href="personal-branding-fotografie.html">Personal branding fotografie →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -820,6 +841,18 @@ html, body {
         <div class="faq-a"><p data-i18n="faq_a8">Ja! Via ons abonnement of parrainage programma geniet je van exclusieve voordelen. Bekijk onze aanbiedingen hierboven.</p></div>
       </div>
     </div>
+    <div class="related-links">
+      <p>Meer dan 150 uitgebreide vragen &amp; antwoorden, per onderwerp:</p>
+      <div class="related-grid">
+        <a href="veelgestelde-vragen.html">Alle veelgestelde vragen →</a>
+        <a href="fotostudio-huren.html">Fotostudio huren</a>
+        <a href="videostudio-huren.html">Videostudio huren</a>
+        <a href="podcast-studio-huren.html">Podcaststudio huren</a>
+        <a href="workshopruimte-huren.html">Workshopruimte huren</a>
+        <a href="vergaderruimte-huren.html">Vergaderruimte huren</a>
+        <a href="personal-branding-fotografie.html">Personal branding fotografie</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1131,6 +1164,7 @@ html, body {
       <a href="#abonnement" data-i18n="nav_abonnement">Abonnement</a>
       <a href="#faq" data-i18n="nav_faq">FAQ</a>
       <a href="#boeken" data-i18n="nav_boeken">Boeken</a>
+      <a href="veelgestelde-vragen.html">Alle veelgestelde vragen</a>
     </div>
     <div class="footer-contact">
       <h4 data-i18n="footer_contact">CONTACT</h4>
@@ -1274,7 +1308,7 @@ html, body {
 <script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
 <script>
-const lbImgs = ['studio-collage-1.png','zone-lounge-detail.png','zone-bureau-day.png','zone-meeting.png','zone-events.png','zone-detail.png','studio-collage-2.png','zone-podcast-1.png','zone-bureau-3.png','studio-overview.png','zone-lounge.png','zone-ambiance-night.jpg'];
+const lbImgs = ['studio-collage-1.jpg','zone-lounge-detail.jpg','zone-bureau-day.jpg','zone-meeting.jpg','zone-events.jpg','zone-detail.jpg','studio-collage-2.jpg','zone-podcast-1.jpg','zone-bureau-3.jpg','studio-overview.jpg','zone-lounge.jpg','zone-ambiance-night.jpg'];
 let lbIdx = 0;
 function openLightbox(img) {
   const src = img.src.split('/').pop();
