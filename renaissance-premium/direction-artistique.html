@@ -254,6 +254,19 @@ h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-s
 .closing-block{background:var(--amber-tint);border-left:3px solid var(--amber);padding:2.6cqi 3cqi;margin:2.6cqi 0;}
 .closing-block p{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:2.6cqi;line-height:1.6;color:var(--ink);margin:0;}
 
+/* ---------- cinematic scene openers ---------- */
+.img-panel{position:absolute;top:0;left:0;right:0;height:60%;overflow:hidden;}
+.img-panel svg{position:absolute;}
+.scene-tag-row{position:relative;z-index:2;padding:5.4cqi 8.6cqi 0;}
+.scene-tag-row .tag{margin-bottom:0;}
+.scene-lower{position:absolute;left:0;right:0;bottom:0;top:56%;display:flex;flex-direction:column;padding:0 8.6cqi 7cqi;}
+h1.scene-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:8.4cqi;line-height:.98;margin:-2cqi 0 2.6cqi;color:var(--ink);position:relative;z-index:2;}
+.scene-title-wrap{position:relative;margin-top:-11cqi;z-index:2;}
+.scene-quote{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:400;font-size:2.6cqi;line-height:1.5;border-left:2px solid var(--gold-line);padding-left:2.2cqi;margin:0 0 2cqi;color:var(--ink);}
+.scene-body{font-size:1.85cqi;line-height:1.75;font-weight:300;color:var(--text-soft);max-width:44cqi;}
+.cover-scrim{position:absolute;left:0;right:0;pointer-events:none;}
+.cover-text{position:relative;z-index:2;}
+
 @media print{
   @page{ size: 8.5in 11in; margin:0; }
   body{background:#fff;}
@@ -346,6 +359,63 @@ h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-s
   <path d="M46,8 C34,22 22,34 10,52" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".7"/>
 </symbol>
 
+<!-- ===== figurative scenes ===== -->
+
+<symbol id="s-walk" viewBox="0 0 220 420">
+  <g fill="currentColor" stroke="none">
+    <circle cx="128" cy="56" r="19"/>
+    <path d="M112,44 C86,38 58,44 40,36 C56,60 88,64 114,54 C110,50 111,47 112,44 Z"/>
+    <path d="M110,72 C88,80 68,104 58,140 C42,196 22,270 6,392 L216,392 C200,270 180,196 164,140 C154,104 132,80 110,72 Z"/>
+    <path d="M112,148 C110,232 112,316 116,392 L104,392 C99,316 99,232 104,148 Z" opacity=".28"/>
+    <path d="M146,102 C164,92 182,80 198,60 L206,66 C190,88 172,102 152,114 Z"/>
+  </g>
+</symbol>
+
+<symbol id="s-mirror" viewBox="0 0 240 340">
+  <ellipse cx="120" cy="150" rx="82" ry="112" fill="none" stroke="currentColor" stroke-width="7"/>
+  <ellipse cx="120" cy="150" rx="71" ry="101" fill="none" stroke="currentColor" stroke-width="1" opacity=".4"/>
+  <path d="M75,250 L55,320 M165,250 L185,320 M45,321 L195,321" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <g fill="currentColor" stroke="none" opacity=".2" transform="translate(240,0) scale(-1,1) translate(-14,-6)">
+    <path d="M104,72 C126,70 144,82 150,102 C156,110 166,112 172,118 C164,122 156,124 150,130 C154,142 150,156 140,164 C148,178 160,192 162,210 L168,232 C142,226 110,226 82,234 L86,206 C88,178 90,148 86,120 C82,92 90,76 104,72 Z"/>
+  </g>
+  <g fill="currentColor" stroke="none">
+    <path d="M104,72 C126,70 144,82 150,102 C156,110 166,112 172,118 C164,122 156,124 150,130 C154,142 150,156 140,164 C148,178 160,192 162,210 L168,232 C142,226 110,226 82,234 L86,206 C88,178 90,148 86,120 C82,92 90,76 104,72 Z"/>
+  </g>
+</symbol>
+
+<symbol id="s-release" viewBox="0 0 260 260">
+  <g fill="currentColor" stroke="none">
+    <circle cx="86" cy="42" r="16"/>
+    <path d="M72,58 C52,64 34,80 28,106 C22,136 30,162 46,180 C34,200 18,214 6,236 L40,250 C54,224 64,200 72,176 C82,196 90,216 96,236 L134,226 C118,200 104,174 98,148 C110,126 118,100 116,76 C114,58 96,54 82,56 C79,57 75,57 72,58 Z"/>
+    <path d="M108,100 C132,104 154,114 174,130 L168,140 C148,126 128,116 106,112 Z"/>
+    <circle cx="192" cy="152" r="29"/>
+  </g>
+  <path d="M172,146 L212,146 M178,163 L206,163" stroke="var(--cream)" stroke-width="1.3" opacity=".3" fill="none"/>
+  <line x1="0" y1="236" x2="260" y2="236" stroke="currentColor" stroke-width="1" opacity=".28"/>
+</symbol>
+
+<symbol id="s-cocoon" viewBox="0 0 120 220">
+  <path d="M60,4 L60,22" stroke="currentColor" stroke-width="2" fill="none"/>
+  <path d="M60,22 C88,32 98,72 94,120 C90,168 76,196 60,200 C44,196 30,168 26,120 C22,72 32,32 60,22 Z" fill="currentColor" stroke="none"/>
+  <path d="M32,70 C46,76 74,76 88,70 M28,112 C46,120 74,120 92,112 M32,152 C46,158 74,158 88,152" stroke="var(--cream)" stroke-width="1.1" opacity=".3" fill="none"/>
+  <path d="M49,28 L53,17 L57,30 L61,15 L65,28" stroke="var(--cream)" stroke-width="1.3" fill="none" opacity=".5"/>
+</symbol>
+
+<symbol id="s-butterfly" viewBox="0 0 200 160">
+  <g fill="currentColor" stroke="none">
+    <path d="M100,80 C64,42 24,44 12,78 C22,108 62,102 100,82 Z"/>
+    <path d="M100,80 C136,42 176,44 188,78 C178,108 138,102 100,82 Z"/>
+    <path d="M100,86 C74,96 50,116 44,142 C68,140 90,120 100,88 Z"/>
+    <path d="M100,86 C126,96 150,116 156,142 C132,140 110,120 100,88 Z"/>
+    <ellipse cx="100" cy="92" rx="4" ry="32"/>
+  </g>
+  <path d="M97,62 C92,50 84,44 78,40 M103,62 C108,50 116,44 122,40" stroke="currentColor" stroke-width="1.4" fill="none"/>
+</symbol>
+
+<symbol id="s-tree" viewBox="0 0 60 220">
+  <path fill="currentColor" stroke="none" d="M30,50 C24,68 18,86 15,105 C21,101 25,99 30,99 C35,99 39,101 45,105 C42,86 36,68 30,50 Z M30,90 C22,112 14,134 10,155 C18,150 24,147 30,147 C36,147 42,150 50,155 C46,134 38,112 30,90 Z M30,135 C20,160 8,182 5,205 C15,199 22,196 30,196 C38,196 45,199 55,205 C52,182 40,160 30,135 Z M27,205 L33,205 L33,218 L27,218 Z"/>
+</symbol>
+
 </defs>
 </svg>
 
@@ -354,7 +424,7 @@ h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-s
   <header class="doc-hero">
     <div class="doc-eyebrow">Renaissance · Journal &amp; Experience · Direction artistique premium</div>
     <h1 class="doc-title">Le même livre.<br>Une <em>expérience</em> visuelle.</h1>
-    <p class="doc-lede">Le texte, la structure en cinq parties et les 58 pages restent intacts, rien n'est réécrit. Ce document propose une identité visuelle complète (palette, typographie, système d'illustration) puis la démontre sur 8 pages prototypes réparties sur tout le livre, pour validation avant la refonte complète.</p>
+    <p class="doc-lede">Le texte, la structure en cinq parties et les 58 pages restent intacts, rien n'est réécrit. Ce document propose une identité visuelle complète (palette, typographie, système d'illustration) puis la démontre sur neuf pages prototypes réparties sur tout le livre, pour validation avant la refonte complète.</p>
   </header>
 
   <section class="doc-section">
@@ -384,13 +454,13 @@ h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-s
 
   <section class="doc-section">
     <h2>3. Système d'illustration</h2>
-    <p class="sub">Six motifs au trait fin, dessinés à la main (vectoriels, donc une impression nette garantie), tous liés au sens du texte plutôt que décoratifs. Un seul motif signature par partie, jamais mélangés.</p>
+    <p class="sub">Première version : retour du client, les motifs abstraits (ondes, rameau, rayons) étaient trop décoratifs, pas assez d'émotion à l'ouverture de chaque partie. Nouvelle direction : une scène symbolique et figurative par partie, silhouette pleine (technique du papier découpé, à contre-jour), qui occupe la moitié de la page dès qu'on tourne le feuillet. Toujours dessinées à la main en vectoriel, donc reproductibles à l'infini et sans aucun droit d'auteur à gérer pour l'édition KDP. Les petites icônes au trait fin restent pour les affirmations, où l'espace doit rester léger.</p>
     <div class="motif-grid">
-      <div class="motif-card"><svg><use href="#m-ripples"/></svg><div class="m-name">Ondes de voix</div><div class="m-use">Partie I · s'exprimer</div></div>
-      <div class="motif-card"><svg><use href="#m-branch"/></svg><div class="m-name">Rameau</div><div class="m-use">Partie III · guérison</div></div>
-      <div class="motif-card"><svg><use href="#m-sunrays"/></svg><div class="m-name">Aube</div><div class="m-use">Partie IV · renaissance</div></div>
-      <div class="motif-card"><svg><use href="#i-leaf"/></svg><div class="m-name">Feuille</div><div class="m-use">Affirmations</div></div>
-      <div class="motif-card"><svg><use href="#i-wave"/></svg><div class="m-name">Souffle</div><div class="m-use">Affirmations</div></div>
+      <div class="motif-card"><svg><use href="#s-walk"/></svg><div class="m-name">Femme vers la lumière</div><div class="m-use">Couverture</div></div>
+      <div class="motif-card"><svg viewBox="0 0 400 240"><use href="#s-tree" transform="translate(30,10) scale(1.3)"/><use href="#s-tree" transform="translate(340,10) scale(-1.3,1.3)"/></svg><div class="m-name">Forêt vers l'aube</div><div class="m-use">Partie I · s'exprimer</div></div>
+      <div class="motif-card"><svg><use href="#s-mirror"/></svg><div class="m-name">Visage au miroir</div><div class="m-use">Partie II · ressentir</div></div>
+      <div class="motif-card"><svg><use href="#s-release"/></svg><div class="m-name">Déposer le poids</div><div class="m-use">Partie III · guérison</div></div>
+      <div class="motif-card"><svg viewBox="0 0 200 220"><use href="#s-cocoon" transform="translate(40,20)"/><use href="#s-butterfly" transform="translate(0,0) scale(.55)"/></svg><div class="m-name">Papillon et cocon</div><div class="m-use">Partie IV · renaissance</div></div>
       <div class="motif-card"><svg><use href="#m-corner"/></svg><div class="m-name">Coin signature</div><div class="m-use">Toutes les pages</div></div>
     </div>
   </section>
@@ -401,12 +471,12 @@ h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-s
     <div class="tbl-wrap">
     <table class="classify">
       <tr><th>Pages</th><th>Contenu</th><th>Traitement</th><th>Motif appliqué</th></tr>
-      <tr><td>1</td><td>Couverture / dédicace</td><td><span class="pill illus">Illustré</span></td><td>Aube dorée en fond, cadre or affiné</td></tr>
+      <tr><td>1</td><td>Couverture / dédicace</td><td><span class="pill illus">Illustré</span></td><td>Scène figurative pleine page, silhouette à contre-jour</td></tr>
       <tr><td>2, 5, 12, 21, 35, 42</td><td>Pages citation pleine page (6)</td><td><span class="pill illus">Illustré</span></td><td>Grand guillemet or + lavis doux + motif discret</td></tr>
       <tr><td>3</td><td>Rituel d'ouverture</td><td><span class="pill sobre">Sobre</span></td><td>/</td></tr>
       <tr><td>4, 58</td><td>Mot de Prisca (ouverture / clôture)</td><td><span class="pill enrichi">Enrichi</span></td><td>Filet or, mise en page plus respirée</td></tr>
       <tr><td>6</td><td>Sommaire</td><td><span class="pill sobre">Sobre</span></td><td>Puces or fines</td></tr>
-      <tr><td>7, 15, 24, 36, 46</td><td>Ouvertures de partie (5)</td><td><span class="pill illus">Illustré</span></td><td>Motif signature + numéral fantôme + lavis couleur</td></tr>
+      <tr><td>7, 15, 24, 36, 46</td><td>Ouvertures de partie (5)</td><td><span class="pill illus">Illustré</span></td><td>Scène symbolique en panneau image + titre qui chevauche</td></tr>
       <tr><td>8, 16, 25, 37</td><td>Intros de partie</td><td><span class="pill enrichi">Enrichi</span></td><td>Bandeau couleur discret</td></tr>
       <tr><td>9-11, 13, 17-19, 22-23, 26-28, 38-41</td><td>Pages "Vraag" / écriture guidée (~20)</td><td><span class="pill sobre">Sobre</span></td><td>Tampon de rubrique coloré + lignes plus espacées</td></tr>
       <tr><td>14, 47-55</td><td>Pages libres "Jouw ruimte" / "Vrije pagina" (~10)</td><td><span class="pill sobre">Sobre</span></td><td>Coin signature uniquement</td></tr>
@@ -420,51 +490,59 @@ h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-s
   </section>
 
   <section class="doc-section">
-    <h2>5. Huit pages prototypes</h2>
-    <p class="sub">Un échantillon représentatif : couverture, trois ouvertures de partie (pour montrer la variation de couleur d'un chapitre à l'autre), une page d'écriture sobre, une citation, une affirmation, et la clôture émotionnelle.</p>
+    <h2>5. Cinq scènes, refaites</h2>
+    <p class="sub">Retour à zéro sur l'illustration : la couverture et les quatre premières ouvertures de partie, chacune construite comme un petit tableau, un panneau image en pleine largeur qui occupe le haut de la page, puis le texte en dessous. Le titre chevauche la coupure entre les deux, comme une affiche de film. L'espace d'écriture des autres pages n'est pas touché.</p>
   </section>
 
   <!-- ==== PLATE 1 - COVER ==== -->
   <div class="plate" id="p1">
-    <div class="plate-cap"><span class="idx">01</span><span class="lbl">Remplace la page 1, couverture et dédicace</span></div>
+    <div class="plate-cap"><span class="idx">01</span><span class="lbl">Remplace la page 1, couverture et dédicace</span><span class="note">Une femme sort de l'ombre vers la lumière, silhouette pleine page</span></div>
     <div class="page-frame">
-      <div class="book-page">
+      <div class="book-page" style="background:linear-gradient(160deg,#2A2013 0%,#4A3A22 38%,#C79A4E 72%,#F3DCA6 100%);">
         <div class="bleed">
-          <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 82% 8%, var(--amber-tint) 0%, transparent 55%);"></div>
-          <svg viewBox="0 0 240 240" preserveAspectRatio="xMaxYMin slice" style="position:absolute;top:-6%;right:-14%;width:78%;height:60%;color:var(--gold-line);opacity:.5;"><use href="#m-sunrays"/></svg>
-          <div style="position:absolute;left:0;right:0;top:0;bottom:0;border:1px solid var(--paper-edge);margin:3.6cqi;pointer-events:none;"></div>
+          <svg viewBox="0 0 240 240" preserveAspectRatio="xMidYMax slice" style="position:absolute;bottom:0;right:-6%;width:70%;height:44%;color:rgba(255,241,205,.5);"><use href="#m-sunrays"/></svg>
+          <svg viewBox="0 0 220 420" preserveAspectRatio="xMidYMax meet" style="position:absolute;bottom:0;right:6%;width:34%;height:76%;color:#1C130A;"><use href="#s-walk"/></svg>
+          <div class="cover-scrim" style="top:0;height:22%;background:linear-gradient(to bottom, rgba(18,12,6,.55) 0%, transparent 100%);"></div>
+          <div style="position:absolute;left:0;right:0;top:0;bottom:0;border:1px solid rgba(255,241,205,.4);margin:3.6cqi;pointer-events:none;"></div>
         </div>
-        <div class="content" style="align-items:center;text-align:center;justify-content:center;">
-          <div class="eyebrow" style="letter-spacing:.4em;">Journal &amp; Experience</div>
-          <h1 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:11cqi;letter-spacing:.14em;margin:1.4cqi 0 3.4cqi;color:var(--ink);">RENAISSANCE</h1>
-          <div style="width:8cqi;height:1px;background:var(--gold-line);margin-bottom:5cqi;"></div>
-          <div style="font-size:2cqi;color:var(--text-muted);margin-bottom:1cqi;">Dit journal is voor</div>
-          <div style="width:46cqi;border-bottom:1px solid var(--gold-line);height:5.4cqi;"></div>
-          <div style="font-size:2cqi;color:var(--text-muted);margin:4.4cqi 0 1cqi;">Met liefde aangeboden door</div>
-          <div style="width:46cqi;border-bottom:1px solid var(--gold-line);height:5.4cqi;"></div>
-          <div class="pquote" style="border:none;text-align:center;padding:0;margin-top:6.5cqi;font-size:2.7cqi;max-width:44cqi;">"Een ruimte voor jou.<br>Voor alles wat je bent<br>en nog zult worden."</div>
+        <div class="content cover-text" style="align-items:flex-start;text-align:left;justify-content:flex-start;color:#F7F1E4;text-shadow:0 1px 10px rgba(15,10,5,.5);">
+          <div style="width:100%;text-align:center;">
+            <div class="eyebrow" style="letter-spacing:.4em;color:#E9D7A8;">Journal &amp; Experience</div>
+            <h1 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:10cqi;letter-spacing:.13em;margin:1.4cqi 0 0;color:#FBF6E8;">RENAISSANCE</h1>
+          </div>
+          <div style="margin-top:9cqi;max-width:52cqi;">
+            <div style="font-size:1.9cqi;color:#EEE1BE;margin-bottom:1cqi;">Dit journal is voor</div>
+            <div style="width:100%;border-bottom:1px solid rgba(255,241,205,.5);height:4.6cqi;"></div>
+            <div style="font-size:1.9cqi;color:#EEE1BE;margin:3.4cqi 0 1cqi;">Met liefde aangeboden door</div>
+            <div style="width:100%;border-bottom:1px solid rgba(255,241,205,.5);height:4.6cqi;"></div>
+          </div>
+          <div class="pquote" style="border:none;text-align:left;padding:0;font-size:2.3cqi;max-width:40cqi;color:#F7F1E4;margin-top:auto;">"Een ruimte voor jou.<br>Voor alles wat je bent<br>en nog zult worden."</div>
         </div>
-        <div class="corner corner-tl"><svg><use href="#m-corner"/></svg></div>
-        <div class="corner corner-br"><svg><use href="#m-corner"/></svg></div>
+        <div class="corner corner-tl" style="color:rgba(255,241,205,.6);"><svg><use href="#m-corner"/></svg></div>
+        <div class="corner corner-br" style="color:rgba(255,241,205,.6);"><svg><use href="#m-corner"/></svg></div>
       </div>
     </div>
   </div>
 
   <!-- ==== PLATE 2 - DEEL I OPENER ==== -->
   <div class="plate" id="p2">
-    <div class="plate-cap"><span class="idx">02</span><span class="lbl">Remplace la page 7, ouverture Deel I</span><span class="note">Terracotta · motif "ondes de voix"</span></div>
+    <div class="plate-cap"><span class="idx">02</span><span class="lbl">Remplace la page 7, ouverture Deel I</span><span class="note">Forêt sombre qui s'ouvre sur un lever de soleil, terracotta</span></div>
     <div class="page-frame">
       <div class="book-page chapter-1">
-        <div class="bleed">
-          <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at -6% 100%, var(--terracotta-tint) 0%, transparent 60%);"></div>
-          <svg viewBox="0 0 300 260" preserveAspectRatio="xMinYMax slice" style="position:absolute;bottom:-10%;left:-10%;width:64%;height:56%;color:var(--terracotta);opacity:.6;"><use href="#m-ripples"/></svg>
+        <div class="img-panel" style="background:linear-gradient(180deg,#241a10 0%,#3c2a18 62%,#c97a4a 92%,#e9c07f 100%);">
+          <svg viewBox="0 0 240 240" preserveAspectRatio="xMidYMax slice" style="bottom:0;left:5%;width:90%;height:36%;color:rgba(255,224,180,.7);"><use href="#m-sunrays"/></svg>
+          <svg viewBox="0 0 60 220" style="bottom:16%;left:4%;width:13%;height:42%;color:#160f08;"><use href="#s-tree"/></svg>
+          <svg viewBox="0 0 60 220" style="bottom:16%;left:14%;width:10%;height:32%;color:#160f08;opacity:.85;"><use href="#s-tree"/></svg>
+          <svg viewBox="0 0 60 220" style="bottom:16%;right:4%;width:13%;height:42%;color:#160f08;transform:scaleX(-1);"><use href="#s-tree"/></svg>
+          <svg viewBox="0 0 60 220" style="bottom:16%;right:14%;width:10%;height:32%;color:#160f08;opacity:.85;transform:scaleX(-1);"><use href="#s-tree"/></svg>
         </div>
-        <div class="roman" style="font-size:46cqi;top:-6cqi;right:-2cqi;color:var(--terracotta);opacity:.09;">I</div>
-        <div class="content">
-          <span class="tag accented">Deel I</span>
-          <h1 class="pt">Jezelf<br>uitspreken.</h1>
-          <div class="pquote">"Soms is schrijven<br>het enige dat echt luistert."</div>
-          <p class="body-txt">Er zijn dingen in jou die al jaren wachten om gezegd te worden. Niet aan iemand anders. Aan jezelf. Dit is die kans.</p>
+        <div class="scene-lower">
+          <div class="scene-title-wrap">
+            <span class="tag accented">Deel I</span>
+            <h1 class="scene-title">Jezelf<br>uitspreken.</h1>
+          </div>
+          <div class="scene-quote">"Soms is schrijven<br>het enige dat echt luistert."</div>
+          <p class="scene-body">Er zijn dingen in jou die al jaren wachten om gezegd te worden. Niet aan iemand anders. Aan jezelf. Dit is die kans.</p>
           <div class="sig">Prisca</div>
         </div>
         <div class="corner corner-tl"><svg><use href="#m-corner"/></svg></div>
@@ -474,9 +552,38 @@ h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-s
     </div>
   </div>
 
-  <!-- ==== PLATE 3 - SOBER WRITING PAGE ==== -->
+  <!-- ==== PLATE 3 - DEEL II OPENER ==== -->
+  <div class="plate" id="p2b">
+    <div class="plate-cap"><span class="idx">03</span><span class="lbl">Remplace la page 15, ouverture Deel II</span><span class="note">Visage au miroir, vieux rose</span></div>
+    <div class="page-frame">
+      <div class="book-page chapter-2">
+        <div class="img-panel" style="background:linear-gradient(165deg,#3a2620 0%,#7a5148 45%,#c9a49c 85%,#ecdad4 100%);">
+          <svg viewBox="0 0 240 340" preserveAspectRatio="xMidYMax meet" style="bottom:14%;left:25%;width:50%;height:78%;color:#2a1a15;"><use href="#s-mirror"/></svg>
+        </div>
+        <div class="scene-lower">
+          <div class="scene-title-wrap">
+            <span class="tag accented">Deel II</span>
+            <h1 class="scene-title">Voelen &amp;<br>begrijpen.</h1>
+          </div>
+          <div class="scene-quote">"Je hoeft je gevoelens<br>niet op te lossen.<br>Je mag ze gewoon<br>laten bestaan."</div>
+          <p class="scene-body">Ik heb lang gedacht dat ik te veel voelde. Totdat ik begreep: gevoelens zijn geen zwakheid. Ze zijn informatie.</p>
+          <div class="sig">Prisca</div>
+        </div>
+        <div class="corner corner-tl"><svg><use href="#m-corner"/></svg></div>
+        <div class="corner corner-br"><svg><use href="#m-corner"/></svg></div>
+        <div class="pagenum">14</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="doc-section" style="margin:5.5rem 0 2rem;">
+    <h2>6. Pour rappel : les pages sobres</h2>
+    <p class="sub">Ces trois traitements avaient été validés au premier passage et n'ont pas changé : l'écriture reste dégagée, la citation et l'affirmation gardent leur calme.</p>
+  </section>
+
+  <!-- ==== PLATE 4 - SOBER WRITING PAGE ==== -->
   <div class="plate" id="p3">
-    <div class="plate-cap"><span class="idx">03</span><span class="lbl">Remplace la page 9, Deel I · Vraag 01</span><span class="note">Volontairement sobre : l'espace d'écriture reste roi</span></div>
+    <div class="plate-cap"><span class="idx">04</span><span class="lbl">Remplace la page 9, Deel I · Vraag 01</span><span class="note">Volontairement sobre : l'espace d'écriture reste roi</span></div>
     <div class="page-frame">
       <div class="book-page chapter-1">
         <div class="ghost-num">01</div>
@@ -499,7 +606,7 @@ h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-s
 
   <!-- ==== PLATE 4 - QUOTE PAGE ==== -->
   <div class="plate" id="p4">
-    <div class="plate-cap"><span class="idx">04</span><span class="lbl">Remplace la page 12, citation pleine page</span></div>
+    <div class="plate-cap"><span class="idx">05</span><span class="lbl">Remplace la page 12, citation pleine page</span></div>
     <div class="page-frame">
       <div class="book-page">
         <div class="bleed">
@@ -521,21 +628,21 @@ h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-s
     </div>
   </div>
 
-  <!-- ==== PLATE 5 - DEEL III OPENER ==== -->
+  <!-- ==== PLATE 6 - DEEL III OPENER ==== -->
   <div class="plate" id="p5">
-    <div class="plate-cap"><span class="idx">05</span><span class="lbl">Remplace la page 24, ouverture Deel III</span><span class="note">Sauge · motif "rameau"</span></div>
+    <div class="plate-cap"><span class="idx">06</span><span class="lbl">Remplace la page 24, ouverture Deel III</span><span class="note">Silhouette qui dépose un poids, sauge</span></div>
     <div class="page-frame">
       <div class="book-page chapter-3">
-        <div class="bleed">
-          <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 100% 8%, var(--sage-tint) 0%, transparent 58%);"></div>
-          <svg viewBox="0 0 160 260" preserveAspectRatio="xMaxYMin slice" style="position:absolute;top:-4%;right:6%;width:34%;height:80%;color:var(--sage);opacity:.75;"><use href="#m-branch"/></svg>
+        <div class="img-panel" style="background:linear-gradient(165deg,#232c1c 0%,#3e4a2f 42%,#8a9a72 78%,#dfe4cd 100%);">
+          <svg viewBox="0 0 260 260" preserveAspectRatio="xMidYMax meet" style="bottom:16%;left:24%;width:50%;height:70%;color:#161d10;"><use href="#s-release"/></svg>
         </div>
-        <div class="roman" style="font-size:46cqi;top:-6cqi;left:-2cqi;color:var(--sage);opacity:.09;">III</div>
-        <div class="content">
-          <span class="tag accented">Deel III</span>
-          <h1 class="pt">Genezing<br>&amp; rust.</h1>
-          <div class="pquote">"Genezing is niet<br>het verdwijnen van pijn.<br>Het is leren<br>ermee te leven."</div>
-          <p class="body-txt">Herstellen is niet hetzelfde als vergeten. Het betekent dat je jezelf toestaat te ademen, ook als het nog pijn doet.</p>
+        <div class="scene-lower">
+          <div class="scene-title-wrap">
+            <span class="tag accented">Deel III</span>
+            <h1 class="scene-title">Genezing<br>&amp; rust.</h1>
+          </div>
+          <div class="scene-quote">"Genezing is niet<br>het verdwijnen van pijn.<br>Het is leren<br>ermee te leven."</div>
+          <p class="scene-body">Herstellen is niet hetzelfde als vergeten. Het betekent dat je jezelf toestaat te ademen, ook als het nog pijn doet.</p>
           <div class="sig">Prisca</div>
         </div>
         <div class="corner corner-tl"><svg><use href="#m-corner"/></svg></div>
@@ -547,7 +654,7 @@ h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-s
 
   <!-- ==== PLATE 6 - AFFIRMATION ==== -->
   <div class="plate" id="p6">
-    <div class="plate-cap"><span class="idx">06</span><span class="lbl">Remplace la page 30, Affirmatie 01</span></div>
+    <div class="plate-cap"><span class="idx">07</span><span class="lbl">Remplace la page 30, Affirmatie 01</span></div>
     <div class="page-frame">
       <div class="book-page">
         <div class="bleed">
@@ -568,21 +675,23 @@ h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-s
     </div>
   </div>
 
-  <!-- ==== PLATE 7 - DEEL IV OPENER ==== -->
+  <!-- ==== PLATE 8 - DEEL IV OPENER ==== -->
   <div class="plate" id="p7">
-    <div class="plate-cap"><span class="idx">07</span><span class="lbl">Remplace la page 36, ouverture Deel IV</span><span class="note">Ambre · motif « aube », le moment le plus fort du livre</span></div>
+    <div class="plate-cap"><span class="idx">08</span><span class="lbl">Remplace la page 36, ouverture Deel IV</span><span class="note">Papillon sortant du cocon, ambre, le moment le plus fort du livre</span></div>
     <div class="page-frame">
       <div class="book-page chapter-4">
-        <div class="bleed">
-          <div style="position:absolute;inset:0;background:linear-gradient(to top, var(--amber-tint) 0%, transparent 55%);"></div>
-          <svg viewBox="0 0 240 240" preserveAspectRatio="xMidYMax slice" style="position:absolute;bottom:-10%;left:0;width:100%;height:58%;color:var(--amber);opacity:.7;"><use href="#m-sunrays"/></svg>
+        <div class="img-panel" style="background:linear-gradient(165deg,#2c2110 0%,#6b4f22 40%,#d9a53f 78%,#f6e2ad 100%);">
+          <svg viewBox="0 0 240 240" preserveAspectRatio="xMidYMax slice" style="bottom:0;left:0;width:100%;height:80%;color:rgba(255,232,180,.5);"><use href="#m-sunrays"/></svg>
+          <svg viewBox="0 0 120 220" style="bottom:4%;left:30%;width:24%;height:70%;color:#2a1c0a;"><use href="#s-cocoon"/></svg>
+          <svg viewBox="0 0 200 160" style="top:8%;right:22%;width:34%;height:34%;color:#2a1c0a;transform:rotate(-8deg);"><use href="#s-butterfly"/></svg>
         </div>
-        <div class="roman" style="font-size:42cqi;top:-5cqi;right:-3cqi;color:var(--amber);opacity:.1;">IV</div>
-        <div class="content">
-          <span class="tag accented">Deel IV</span>
-          <h1 class="pt">Vooruit-<br>gaan.</h1>
-          <div class="pquote">"Het gaat niet om wie<br>je was. Het gaat om<br>wie je wilt zijn."</div>
-          <p class="body-txt">Ik ben van ver gekomen. Letterlijk en figuurlijk. En ik heb geleerd: vooruitgaan begint niet met een plan. Het begint met een keuze.</p>
+        <div class="scene-lower">
+          <div class="scene-title-wrap">
+            <span class="tag accented">Deel IV</span>
+            <h1 class="scene-title">Vooruit-<br>gaan.</h1>
+          </div>
+          <div class="scene-quote">"Het gaat niet om wie<br>je was. Het gaat om<br>wie je wilt zijn."</div>
+          <p class="scene-body">Ik ben van ver gekomen. Letterlijk en figuurlijk. En ik heb geleerd: vooruitgaan begint niet met een plan. Het begint met een keuze.</p>
           <div class="sig">Prisca</div>
         </div>
         <div class="corner corner-tl"><svg><use href="#m-corner"/></svg></div>
@@ -594,12 +703,13 @@ h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-s
 
   <!-- ==== PLATE 8 - CLOSING PAGE ==== -->
   <div class="plate" id="p8">
-    <div class="plate-cap"><span class="idx">08</span><span class="lbl">Remplace la page 57, clôture « Tot slot »</span></div>
+    <div class="plate-cap"><span class="idx">09</span><span class="lbl">Remplace la page 57, clôture « Tot slot »</span><span class="note">Le papillon du Deel IV revient, libre, en écho final</span></div>
     <div class="page-frame">
       <div class="book-page chapter-4">
         <div class="bleed">
           <div style="position:absolute;inset:0;background:radial-gradient(120% 70% at 50% 118%, var(--amber-tint) 0%, transparent 60%);"></div>
           <svg viewBox="0 0 240 240" preserveAspectRatio="xMidYMax slice" style="position:absolute;bottom:-14%;left:8%;width:84%;height:34%;color:var(--amber);opacity:.32;"><use href="#m-sunrays"/></svg>
+          <svg viewBox="0 0 200 160" style="position:absolute;top:9%;right:9%;width:16%;height:16%;color:var(--amber);opacity:.8;"><use href="#s-butterfly"/></svg>
         </div>
         <div class="content">
           <span class="eyebrow">Tot slot</span>
@@ -617,7 +727,7 @@ h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-s
   </div>
 
   <section class="doc-section" style="margin-top:6rem;">
-    <h2>6. Prochaine étape</h2>
+    <h2>7. Prochaine étape</h2>
     <p class="sub" style="max-width:70ch;">Si cette direction convient, l'étape suivante applique le même système aux 58 pages : 5 ouvertures de partie (avec leurs 5 lavis de couleur), 6 citations, 8 affirmations, la couverture, la clôture, et un habillage discret (tampon et espacement) sur toutes les pages d'écriture, puis l'export d'un PDF unique 8,5 × 11 po, fond perdu compris, prêt pour l'impression KDP.</p>
   </section>
 
