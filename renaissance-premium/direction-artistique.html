@@ -236,6 +236,24 @@ h1.pt{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:9
 h2.q-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:5cqi;line-height:1.18;margin:0 0 1.6cqi;color:var(--ink);text-wrap:balance;}
 .q-instr{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:2.2cqi;color:var(--text-muted);}
 .write-lines{flex:1;display:flex;flex-direction:column;justify-content:flex-start;gap:5.6cqi;margin-top:2cqi;}
+.write-lines.full{gap:3.5cqi;margin-top:1cqi;}
+
+.spread-wrap{margin:5rem 0;}
+.spread{display:flex;gap:3px;max-width:900px;margin:0 auto;background:var(--chrome-line);}
+.spread .half{flex:1 1 0;min-width:0;position:relative;}
+.spread .half .page-frame{max-width:none;box-shadow:none;}
+.half-tag{position:absolute;top:-2rem;left:0;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--chrome-muted);}
+.quiet-label{font-size:1.4cqi;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1cqi;}
+.q-title-lg{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:6.2cqi;line-height:1.2;margin:0 0 2.4cqi;color:var(--ink);text-wrap:balance;}
+.aff-icon-lower{width:6cqi;height:6cqi;color:var(--gold);opacity:.6;margin-top:auto;}
+
+@media print{
+  .spread-wrap{margin:0;}
+  .spread{display:block;background:none;}
+  .spread .half{page-break-after:always;}
+  .spread .half.no-break{page-break-after:auto;}
+  .half-tag{display:none;}
+}
 .write-lines span{display:block;border-bottom:1px solid #ddd0b4;}
 .ghost-num{position:absolute;right:5cqi;bottom:9cqi;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:26cqi;color:var(--gold);opacity:.05;line-height:1;pointer-events:none;}
 
@@ -427,7 +445,7 @@ h1.scene-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;fo
   <header class="doc-hero">
     <div class="doc-eyebrow">Renaissance · Journal &amp; Experience · Direction artistique premium</div>
     <h1 class="doc-title">Le même livre.<br>Une <em>expérience</em> visuelle.</h1>
-    <p class="doc-lede">Le texte, la structure en cinq parties et les 58 pages restent intacts, rien n'est réécrit. Ce document propose une identité visuelle complète (palette, typographie, système d'illustration) puis la démontre sur neuf pages prototypes réparties sur tout le livre, pour validation avant la refonte complète.</p>
+    <p class="doc-lede">Le texte et la structure en cinq parties restent intacts, rien n'est réécrit, rien ne disparaît. Ce document propose une identité visuelle complète (palette, typographie, système d'illustration) puis la démontre sur treize pages prototypes réparties sur tout le livre, y compris deux doubles pages question / écriture, pour validation avant la refonte complète.</p>
   </header>
 
   <section class="doc-section">
@@ -590,7 +608,7 @@ h1.scene-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;fo
 
   <!-- ==== PLATE 4 - SOBER WRITING PAGE ==== -->
   <div class="plate" id="p3">
-    <div class="plate-cap"><span class="idx">04</span><span class="lbl">Remplace la page 9, Deel I · Vraag 01</span><span class="note">Volontairement sobre : l'espace d'écriture reste roi</span></div>
+    <div class="plate-cap"><span class="idx">04</span><span class="lbl">Ancienne proposition : question et lignes réunies</span><span class="note">Dépassée par la double page en section 7 ci-dessous, qui donne plus de place à l'écriture</span></div>
     <div class="page-frame">
       <div class="book-page chapter-1">
         <div class="ghost-num">01</div>
@@ -737,8 +755,85 @@ h1.scene-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;fo
   </div>
 
   <section class="doc-section" style="margin-top:6rem;">
-    <h2>7. Prochaine étape</h2>
-    <p class="sub" style="max-width:70ch;">Si cette direction convient, l'étape suivante applique le même système aux 58 pages : 5 ouvertures de partie (avec leurs 5 lavis de couleur), 6 citations, 8 affirmations, la couverture, la clôture, et un habillage discret (tampon et espacement) sur toutes les pages d'écriture, puis l'export d'un PDF unique 8,5 × 11 po, fond perdu compris, prêt pour l'impression KDP.</p>
+    <h2>7. Question à gauche, écriture à droite</h2>
+    <p class="sub" style="max-width:70ch;">Dans l'original, chaque question et ses lignes tenaient sur une seule page. Ici, la question respire seule sur la page de gauche, et la page de droite lui est entièrement consacrée : rien que des lignes, davantage que dans l'original. Rien n'est retiré, au contraire, ça ajoute des pages au livre. Deux exemples, dans deux parties différentes, pour juger la logique avant de l'appliquer partout.</p>
+  </section>
+
+  <div class="spread-wrap">
+    <div class="spread">
+      <div class="half">
+        <div class="page-frame">
+          <div class="book-page chapter-1">
+            <div class="content" style="justify-content:center;">
+              <span class="tag accented">Deel I · Vraag 01</span>
+              <h1 class="q-title-lg">Wat draag je al jaren<br>dat niemand ziet?</h1>
+              <div class="q-instr" style="max-width:40cqi;">Niet wat je toont, maar wat je verbergt. Schrijf het hier, voor de eerste keer eerlijk.</div>
+              <svg class="aff-icon-lower"><use href="#i-feather"/></svg>
+            </div>
+            <div class="corner corner-tl"><svg><use href="#m-corner"/></svg></div>
+            <div class="corner corner-br"><svg><use href="#m-corner"/></svg></div>
+            <div class="pagenum">08</div>
+          </div>
+        </div>
+      </div>
+      <div class="half no-break">
+        <div class="page-frame">
+          <div class="book-page chapter-1">
+            <div class="content">
+              <div class="quiet-label">Deel I · Vraag 01</div>
+              <div class="write-lines full">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="corner corner-tl"><svg><use href="#m-corner"/></svg></div>
+            <div class="corner corner-br"><svg><use href="#m-corner"/></svg></div>
+            <div class="pagenum">09</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:.82rem;color:var(--chrome-muted);margin-top:1rem;font-style:italic;">Remplace la page 9 de l'original (question + lignes réunies) — devient un spread de deux pages</p>
+  </div>
+
+  <div class="spread-wrap">
+    <div class="spread">
+      <div class="half">
+        <div class="page-frame">
+          <div class="book-page chapter-3">
+            <div class="content" style="justify-content:center;">
+              <span class="tag accented">Deel III · Vraag 07</span>
+              <h1 class="q-title-lg">Wat heeft jou geraakt<br>dat je nooit hardop<br>hebt gezegd?</h1>
+              <div class="q-instr" style="max-width:40cqi;">Je schrijft het hier. Je laat het hier achter.</div>
+              <svg class="aff-icon-lower"><use href="#i-leaf"/></svg>
+            </div>
+            <div class="corner corner-tl"><svg><use href="#m-corner"/></svg></div>
+            <div class="corner corner-br"><svg><use href="#m-corner"/></svg></div>
+            <div class="pagenum">27</div>
+          </div>
+        </div>
+      </div>
+      <div class="half no-break">
+        <div class="page-frame">
+          <div class="book-page chapter-3">
+            <div class="content">
+              <div class="quiet-label">Deel III · Vraag 07</div>
+              <div class="write-lines full">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="corner corner-tl"><svg><use href="#m-corner"/></svg></div>
+            <div class="corner corner-br"><svg><use href="#m-corner"/></svg></div>
+            <div class="pagenum">28</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:.82rem;color:var(--chrome-muted);margin-top:1rem;font-style:italic;">Remplace la page 26 de l'original — même logique, en sauge</p>
+  </div>
+
+  <section class="doc-section" style="margin-top:6rem;">
+    <h2>8. Prochaine étape</h2>
+    <p class="sub" style="max-width:70ch;">Si cette direction convient, l'étape suivante applique le même système à tout le livre : 5 ouvertures de partie, 6 citations, 8 affirmations, la couverture, la clôture, un habillage discret sur les pages déjà en une seule page (comme "Jouw ruimte" et "Vrije pagina", qui restent telles quelles), et le passage en double page pour les 12 questions "Vraag" et les exercices similaires. Le livre passera donc au-delà de 58 pages, uniquement pour donner plus de place à l'écriture, jamais pour couper du texte. Je referai ensuite une relecture complète, orthographe, ponctuation, numérotation, ordre des parties, cohérence des couleurs et présence de tous les textes originaux, avant l'export du PDF final 8,5 × 11 po prêt pour KDP.</p>
   </section>
 
 </div>
