@@ -288,11 +288,20 @@ h1.scene-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;fo
 @media print{
   @page{ size: 8.5in 11in; margin:0; }
   body{background:#fff;}
-  .doc-hero,.doc-section,.pages-index{display:none !important;}
   .wrap{max-width:none;padding:0;margin:0;}
-  .plate{margin:0;page-break-after:always;}
+  /* allowlist: only the book pages themselves may print — anything else added
+     to this document later (notes, captions, doc sections) is hidden by
+     default instead of needing to be remembered and hidden one by one. */
+  .wrap > *{display:none !important;}
+  .wrap > .plate, .wrap > .spread-wrap{display:block !important;}
+  .plate > *{display:none !important;}
+  .plate > .page-frame{display:block !important;}
+  .spread-wrap > *{display:none !important;}
+  .spread-wrap > .spread{display:block !important;}
+  .spread .half > *{display:block !important;}
+  .plate{margin:0;height:11in;overflow:hidden;page-break-after:always;}
   .plate:last-child{page-break-after:auto;}
-  .plate-cap{display:none;}
+  .spread .half{height:11in;overflow:hidden;}
   .page-frame{width:8.5in;height:11in;max-width:none;aspect-ratio:auto;box-shadow:none;margin:0;}
 }
 </style>
@@ -792,7 +801,7 @@ h1.scene-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;fo
         </div>
       </div>
     </div>
-    <p style="text-align:center;font-size:.82rem;color:var(--chrome-muted);margin-top:1rem;font-style:italic;">Remplace la page 9 de l'original (question + lignes réunies) — devient un spread de deux pages</p>
+    <p class="spread-note" style="text-align:center;font-size:.82rem;color:var(--chrome-muted);margin-top:1rem;font-style:italic;">Remplace la page 9 de l'original (question + lignes réunies) — devient un spread de deux pages</p>
   </div>
 
   <div class="spread-wrap">
@@ -828,7 +837,7 @@ h1.scene-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;fo
         </div>
       </div>
     </div>
-    <p style="text-align:center;font-size:.82rem;color:var(--chrome-muted);margin-top:1rem;font-style:italic;">Remplace la page 26 de l'original — même logique, en sauge</p>
+    <p class="spread-note" style="text-align:center;font-size:.82rem;color:var(--chrome-muted);margin-top:1rem;font-style:italic;">Remplace la page 26 de l'original — même logique, en sauge</p>
   </div>
 
   <section class="doc-section" style="margin-top:6rem;">
