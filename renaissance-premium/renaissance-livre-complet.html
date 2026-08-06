@@ -220,14 +220,19 @@ h1.scene-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;fo
 .layer-write-lines{display:flex;flex-direction:column;gap:3.2cqi;}
 .layer-write-lines span{display:block;border-bottom:1px solid #ddd0b4;}
 
-.location-tag{display:inline-block;border-left:2px solid var(--gold-line);padding-left:1.6cqi;font-size:1.4cqi;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);margin-top:2.4cqi;}
+.location-tag{display:inline-block;border-left:2px solid var(--gold-line);padding-left:1.6cqi;font-size:1.4cqi;text-transform:uppercase;color:var(--text-muted);margin-top:2.4cqi;}
 
+/* KDP print bleed: trim is 8.5x11in; submitted PDF adds .125in bleed on
+   every edge (8.75x11.25in) per Amazon KDP's bleed-file specification.
+   All positioning inside a page uses cqi (% of the page-frame's own
+   width), so this resize automatically keeps every safety margin
+   proportional -- nothing needs repositioning by hand. */
 @media print{
-  @page{ size: 8.5in 11in; margin:0; }
+  @page{ size: 8.75in 11.25in; margin:0; }
   body{background:#fff;}
-  .plate{margin:0;height:11in;overflow:hidden;page-break-after:always;}
+  .plate{margin:0;height:11.25in;overflow:hidden;page-break-after:always;}
   .plate:last-child{page-break-after:auto;}
-  .page-frame{width:8.5in;height:11in;max-width:none;aspect-ratio:auto;box-shadow:none;margin:0;}
+  .page-frame{width:8.75in;height:11.25in;max-width:none;aspect-ratio:auto;box-shadow:none;margin:0;}
 }
 
 </style>
@@ -444,7 +449,7 @@ h1.scene-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;fo
           <h1 class="pt" style="font-size:6.4cqi;">Een klein ritueel.<br>Alleen voor jou.</h1>
           <p class="body-txt">Dit journal vraagt maar één ding van je: aanwezig zijn. Niet perfect. Niet sterk. Gewoon hier.</p>
           <p class="body-txt">Voordat je je eerste woord schrijft, neem even de tijd:</p>
-          <div class="ritual-list"><div class="ritual-row"><span class="ritual-num">01</span><span class="ritual-txt">Leg je telefoon weg. Zelfs maar vijf minuten.</span></div><div class="ritual-row"><span class="ritual-num">02</span><span class="ritual-txt">Haal diep adem. Voel je voeten op de grond.</span></div><div class="ritual-row"><span class="ritual-num">03</span><span class="ritual-txt">Zet een glas water neer. Of een kop thee. Iets dat zegt: dit moment is van mij.</span></div><div class="ritual-row"><span class="ritual-num">04</span><span class="ritual-txt">Zeg het , hardop of in gedachten: "Ik ben er voor mezelf."</span></div></div>
+          <div class="ritual-list"><div class="ritual-row"><span class="ritual-num">01</span><span class="ritual-txt">Leg je telefoon weg. Zelfs maar vijf minuten.</span></div><div class="ritual-row"><span class="ritual-num">02</span><span class="ritual-txt">Haal diep adem. Voel je voeten op de grond.</span></div><div class="ritual-row"><span class="ritual-num">03</span><span class="ritual-txt">Zet een glas water neer. Of een kop thee. Iets dat zegt: dit moment is van mij.</span></div><div class="ritual-row"><span class="ritual-num">04</span><span class="ritual-txt">Zeg het, hardop of in gedachten: "Ik ben er voor mezelf."</span></div></div>
           <div class="callout" style="margin-top:2.6cqi;"><p>Nu ben je klaar. Niet voor het boek. Voor jezelf.</p></div>
         </div>
         <div class="corner corner-tl"><svg><use href="#m-corner"/></svg></div><div class="corner corner-br"><svg><use href="#m-corner"/></svg></div>
@@ -461,7 +466,7 @@ h1.scene-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;fo
         <div class="content">
           <div class="eyebrow">Een woord van Prisca</div>
           <h1 class="pt" style="font-size:6.4cqi;">Ik heb je<br>al een tijdje<br>verwacht.</h1>
-          <p class="body-txt">Niet jou specifiek, maar iemand zoals jij. Iemand die draagt. Die geeft. Die bezig is voor iedereen behalve zichzelf. Iemand die 's avonds in bed ligt en denkt: wanneer is het mijn beurt?</p><p class="body-txt">Ik ken dat gevoel. Ik heb het jaren meegedragen. Tussen de landen, de talen, de rollen die ik moest spelen. Tot ik op een dag besefte: ik weet niet meer wie ik ben als ik niet voor iemand zorg.</p><p class="body-txt">Dit journal is wat ik toen nodig had. Het is geen methode. Geen stappenplan. Het is een ruimte. Stille, eerlijke ruimte. Om terug te komen bij jezelf.</p><p class="body-txt">Je hoeft hier niets te bewijzen. Je bent al genoeg. Je bent hier. Dat is al het begin.</p>
+          <p class="body-txt">Niet jou specifiek, maar iemand zoals jij. Iemand die draagt. Die geeft. Die bezig is voor iedereen behalve zichzelf. Iemand die 's avonds in bed ligt en denkt: wanneer is het mijn beurt?</p><p class="body-txt">Ik ken dat gevoel. Ik heb het jaren meegedragen. Tussen de landen, de talen, de rollen die ik moest spelen. Tot ik op een dag besefte: ik weet niet meer wie ik ben als ik niet voor iemand zorg.</p><p class="body-txt">Dit journal is wat ik toen nodig had. Het is geen methode. Geen stappenplan. Het is een ruimte. Een stille, eerlijke ruimte. Om terug te komen bij jezelf.</p><p class="body-txt">Je hoeft hier niets te bewijzen. Je bent al genoeg. Je bent hier. Dat is al het begin.</p>
           
           
           <div class="sig">Met warmte, Prisca</div>
@@ -1489,7 +1494,7 @@ h1.scene-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;fo
             <svg class="aff-icon"><use href="#i-wave"/></svg>
             <div class="q-cap" style="margin-bottom:2.4cqi;">Affirmatie 08</div>
             <div class="aff-text">"Mijn rust<br>is mijn kracht."</div>
-            <div class="aff-cap">Niet ondanks wie ik ben. Maar dankzij.</div>
+            <div class="aff-cap">Niet ondanks wie ik ben, maar juist dankzij wie ik ben.</div>
           </div>
         </div>
         <div class="corner corner-tl"><svg><use href="#m-corner"/></svg></div><div class="corner corner-br"><svg><use href="#m-corner"/></svg></div>
@@ -1706,11 +1711,11 @@ h1.scene-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;fo
         <div class="content">
           <div class="eyebrow">Een woord van Prisca</div>
           
-          <p class="body-txt" style="font-size:1.8cqi;line-height:1.7;">Dit journal bestaat omdat ik het zelf nodig had.</p><p class="body-txt" style="font-size:1.8cqi;line-height:1.7;">Er waren periodes in mijn leven dat ik alles droeg: voor mijn gezin, voor mijn werk, voor wie ik dacht te moeten zijn. Ik ben ver van huis gekomen, heb nieuwe talen geleerd, nieuwe werelden gebouwd. En ergens onderweg raakte ik mezelf kwijt. Niet dramatisch. Gewoon&hellip; stiller geworden van binnen.</p><p class="body-txt" style="font-size:1.8cqi;line-height:1.7;">Op een avond, moe, alleen met mijn gedachten, begon ik te te schrijven. Niet omdat ik antwoorden had. Maar omdat ik eindelijk de moed had om de vragen te stellen.</p>
+          <p class="body-txt" style="font-size:1.8cqi;line-height:1.7;">Dit journal bestaat omdat ik het zelf nodig had.</p><p class="body-txt" style="font-size:1.8cqi;line-height:1.7;">Er waren periodes in mijn leven dat ik alles droeg: voor mijn gezin, voor mijn werk, voor wie ik dacht te moeten zijn. Ik ben ver van huis gekomen, heb nieuwe talen geleerd, nieuwe werelden gebouwd. En ergens onderweg raakte ik mezelf kwijt. Niet dramatisch. Gewoon&hellip; stiller geworden van binnen.</p><p class="body-txt" style="font-size:1.8cqi;line-height:1.7;">Op een avond, moe, alleen met mijn gedachten, begon ik te schrijven. Niet omdat ik antwoorden had. Maar omdat ik eindelijk de moed had om de vragen te stellen.</p>
           <div class="callout" style="padding:1.8cqi 2.2cqi;"><p style="font-size:1.9cqi;">Dat is het moment waarop ik mezelf terugvond. Niet in één keer. Pagina na pagina.</p></div>
           <p class="body-txt">Dit journal is mijn manier om jou die ruimte te geven die ik zo hard nodig had. Het is niet bedoeld om je te veranderen. Het is bedoeld om je te herinneren aan wie je al bent, en altijd al was.</p><p class="body-txt">Ik hoop dat je het gebruikt. Niet perfect. Gewoon eerlijk. Dat is genoeg.</p>
           <div class="sig">Met warmte,<br>Prisca</div>
-          <div class="location-tag">Roosendaal, Nederland</div>
+          <div class="location-tag"><span style="letter-spacing:.15em;">Roosendaal</span>,<span style="letter-spacing:.15em;"> Nederland</span></div>
         </div>
         <div class="corner corner-tl"><svg><use href="#m-corner"/></svg></div><div class="corner corner-br"><svg><use href="#m-corner"/></svg></div>
         <div class="pagenum">71</div>
