@@ -41,6 +41,23 @@ navLinks.querySelectorAll('a').forEach(a => {
   });
 });
 
+// ── DESKTOP LANGUAGE DROPDOWN ──
+const langSwitch = document.getElementById('lang-switch');
+const langSwitchBtn = document.getElementById('lang-switch-btn');
+if (langSwitch && langSwitchBtn) {
+  langSwitchBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = langSwitch.classList.toggle('open');
+    langSwitchBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  document.addEventListener('click', (e) => {
+    if (!langSwitch.contains(e.target)) {
+      langSwitch.classList.remove('open');
+      langSwitchBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
 // ── PARTICLES ──
 function createParticles() {
   const container = document.getElementById('particles');

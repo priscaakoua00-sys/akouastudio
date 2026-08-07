@@ -7,7 +7,7 @@ const translations = {
 
   nl: {
     nav_sub: "Studio · Roosendaal",
-    nav_studio: "Studio", nav_tarieven: "Tarieven", nav_services: "Services",
+    nav_studio: "Studio", nav_tarieven: "Tarieven", nav_diensten: "Diensten", nav_services: "Services",
     nav_reviews: "Reviews", nav_abonnement: "Abonnement", nav_faq: "FAQ", nav_renaissance: "Renaissance", nav_boeken: "Boeken",
     nav_community: "Community",
     nav_account: "Mijn Account",
@@ -216,7 +216,7 @@ const translations = {
 
   en: {
     nav_sub: "Studio · Roosendaal",
-    nav_studio: "Studio", nav_tarieven: "Pricing", nav_services: "Services",
+    nav_studio: "Studio", nav_tarieven: "Pricing", nav_diensten: "Services", nav_services: "Services",
     nav_reviews: "Reviews", nav_abonnement: "Membership", nav_faq: "FAQ", nav_renaissance: "Renaissance", nav_boeken: "Book",
     nav_community: "Community",
     nav_account: "My Account",
@@ -424,7 +424,7 @@ const translations = {
 
   fr: {
     nav_sub: "Studio · Roosendaal",
-    nav_studio: "Studio", nav_tarieven: "Tarifs", nav_services: "Services",
+    nav_studio: "Studio", nav_tarieven: "Tarifs", nav_diensten: "Services", nav_services: "Services",
     nav_reviews: "Avis", nav_abonnement: "Abonnement", nav_faq: "FAQ", nav_renaissance: "Renaissance", nav_boeken: "Réserver",
     nav_community: "Communauté",
     nav_account: "Mon Compte",
@@ -632,7 +632,7 @@ const translations = {
 
   es: {
     nav_sub: "Studio · Roosendaal",
-    nav_studio: "Estudio", nav_tarieven: "Precios", nav_services: "Servicios",
+    nav_studio: "Estudio", nav_tarieven: "Precios", nav_diensten: "Servicios", nav_services: "Servicios",
     nav_reviews: "Reseñas", nav_abonnement: "Membresía", nav_faq: "FAQ", nav_renaissance: "Renaissance", nav_boeken: "Reservar",
     nav_community: "Comunidad",
     nav_account: "Mi Cuenta",
@@ -846,6 +846,10 @@ function setLang(lang) {
   document.documentElement.lang = lang;
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.lang-btn').forEach(b => { if(b.textContent.toLowerCase() === lang) b.classList.add('active'); });
+  const switchLabel = document.getElementById('lang-switch-current');
+  if (switchLabel) switchLabel.textContent = lang.toUpperCase();
+  const langSwitchEl = document.getElementById('lang-switch');
+  if (langSwitchEl) langSwitchEl.classList.remove('open');
   applyTranslations();
 }
 
