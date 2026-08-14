@@ -35,16 +35,6 @@ html, body {
 <body>
 
 <!-- ═══════════════════════════════════════════════
-     LANGUAGE SWITCHER
-═══════════════════════════════════════════════ -->
-<div class="lang-bar">
-  <button class="lang-btn active" onclick="setLang('nl')">NL</button>
-  <button class="lang-btn" onclick="setLang('en')">EN</button>
-  <button class="lang-btn" onclick="setLang('fr')">FR</button>
-  <button class="lang-btn" onclick="setLang('es')">ES</button>
-</div>
-
-<!-- ═══════════════════════════════════════════════
      NAVIGATION
 ═══════════════════════════════════════════════ -->
 <nav class="navbar" id="navbar">
@@ -84,21 +74,89 @@ html, body {
 <section class="hero" id="home">
   <div class="hero-particles" id="particles"></div>
   <div class="hero-content">
-    <div class="hero-badge" data-i18n="hero_badge">PREMIUM STUDIO · ROOSENDAAL</div>
-    <h1 class="hero-title">
-      <span class="hero-title-main">AKOUA</span>
-      <span class="hero-title-sub">STUDIO</span>
-    </h1>
-    <p class="hero-tagline" data-i18n="hero_tagline">Jouw moment. Jouw beeld. Jouw kracht.</p>
-    <p class="hero-sub" data-i18n="hero_sub">STUDIO PRIVÉ · PLAATSEN BEPERKT · PREMIUM ERVARING</p>
-    <p class="hero-creative" data-i18n="hero_creative">Creëer. Expresseer. Evolueer.</p>
+    <div class="hero-badge">PROFESSIONELE WERKPLEK · ROOSENDAAL</div>
+    <h1 class="hero-title-new">Een professioneel adres,<br/><em>zonder de kosten van een vast kantoor.</em></h1>
+    <p class="hero-sub-new">Reserveer je eigen privéruimte in Roosendaal, per uur of per dag, om te werken, klanten te ontvangen en je bedrijf te laten groeien.</p>
+    <ul class="hero-facts">
+      <li>Vanaf €60/uur</li>
+      <li>100% privé</li>
+      <li>Gratis parkeren</li>
+      <li>Veel natuurlijk licht</li>
+      <li>Tot 15 personen</li>
+      <li>Flexibel boeken</li>
+    </ul>
     <div class="hero-btns">
-      <a href="#boeken" class="btn-gold" data-i18n="hero_btn1">Reserveer Nu</a>
-      <a href="#studio" class="btn-outline" data-i18n="hero_btn2">Ontdek de Studio</a>
+      <a href="#tarieven" class="btn-gold">Bekijk beschikbaarheid &amp; boek nu</a>
+      <a href="https://wa.me/31627374813?text=Hallo!%20Ik%20wil%20graag%20een%20gratis%20bezichtiging%20plannen." target="_blank" class="btn-outline">Plan een gratis bezichtiging</a>
     </div>
   </div>
   <div class="hero-scroll-hint">
     <span></span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     WAT KUN JE HIER DOEN — GEBRUIKSFOTO'S
+═══════════════════════════════════════════════ -->
+<section class="usage-cards" id="gebruik">
+  <div class="container">
+    <span class="section-label center">WAT KUN JE HIER DOEN?</span>
+    <h2 class="section-title center">Eén ruimte,<br/><em>voor alles wat jij nodig hebt</em></h2>
+    <div class="usage-grid">
+      <div class="usage-card">
+        <img src="gebruik-ontvangst.jpg" alt="Klanten ontvangen bij Akoua Studio" loading="lazy" />
+        <div class="usage-card-body">
+          <h3>Ontvang je klanten in alle privacy</h3>
+          <p>Een rustige, stijlvolle ruimte waar je klanten zich op hun gemak voelen.</p>
+          <a href="diensten.html#zones" class="btn-outline-sm">Bekijk de Lounge</a>
+        </div>
+      </div>
+      <div class="usage-card">
+        <img src="gebruik-coaching.jpg" alt="Coaching en consult bij Akoua Studio" loading="lazy" />
+        <div class="usage-card-body">
+          <h3>Organiseer een coaching of consult</h3>
+          <p>Een privé setting voor diepgaande gesprekken en zakelijke consults.</p>
+          <a href="#boeken" class="btn-outline-sm">Reserveer voor een consult</a>
+        </div>
+      </div>
+      <div class="usage-card">
+        <img src="gebruik-podcast.jpg" alt="Podcast opnemen bij Akoua Studio" loading="lazy" />
+        <div class="usage-card-body">
+          <h3>Neem je podcast of content op</h3>
+          <p>Een stille, professionele opstelling, klaar om direct op te nemen.</p>
+          <a href="podcast-studio-huren.html" class="btn-outline-sm">Bekijk podcast tarieven</a>
+        </div>
+      </div>
+      <div class="usage-card">
+        <img src="gebruik-fotografie.jpg" alt="Foto's en video's maken bij Akoua Studio" loading="lazy" />
+        <div class="usage-card-body">
+          <h3>Creëer foto's of video's</h3>
+          <p>3 achtergronden, ring light en softboxes, alles staat klaar.</p>
+          <a href="fotostudio-huren.html" class="btn-outline-sm">Bekijk fotostudio</a>
+        </div>
+      </div>
+      <div class="usage-card">
+        <img src="gebruik-workshop.jpg" alt="Vergaderen en workshops bij Akoua Studio" loading="lazy" />
+        <div class="usage-card-body">
+          <h3>Vergader of geef een workshop</h3>
+          <p>Tot 15 personen, groot scherm, volledige privacy.</p>
+          <a href="vergaderruimte-huren.html" class="btn-outline-sm">Bekijk vergaderopties</a>
+        </div>
+      </div>
+    </div>
+    <div class="usage-gallery-cta">
+      <a href="diensten.html#zones" class="btn-outline">✦ Bekijk alle zones &amp; foto's</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     VERGELIJKING — VAST KANTOOR VS PAY-PER-USE
+═══════════════════════════════════════════════ -->
+<section class="comparison">
+  <div class="container comparison-inner">
+    <p class="comparison-text">Een vast kantoor kost je elke maand geld, <em>ook wanneer je het niet gebruikt.</em><br class="br-desktop"/>
+    Bij Akoua Studio reserveer je alleen de tijd die je nodig hebt.</p>
   </div>
 </section>
 
