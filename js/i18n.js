@@ -172,6 +172,9 @@ const translations = {
     comm_cta: "✦ SCHRIJF JE IN · WHATSAPP 06 27 37 48 13 →",
     comm_note: "Plaatsen zeer beperkt · Maximum 10 leden per programma · Exclusief privécirkel",
     chat_online: "· Online · Antwoordt nu",
+    chat_title: "Akoua Studio Assistent",
+    chat_more: "Meer vragen ▾",
+    chat_placeholder: "Stel je vraag…",
     chat_hello: "Hallo! Ik ben de assistent van Akoua Studio. Hoe kan ik je helpen?",
     chat_q1: "Wat kan ik allemaal doen in de studio?", chat_q2: "Welke boeking past het beste bij mij?",
     chat_q3: "Kan ik hier rustig een klant ontvangen?", chat_q4: "Kan ik hier een podcast opnemen?",
@@ -385,6 +388,9 @@ const translations = {
     comm_cta: "✦ REGISTER · WHATSAPP 06 27 37 48 13 →",
     comm_note: "Very limited spots · Maximum 10 members per program · Exclusive private circle",
     chat_online: "· Online · Responds now",
+    chat_title: "Akoua Studio Assistant",
+    chat_more: "More questions ▾",
+    chat_placeholder: "Ask your question…",
     chat_hello: "Hello! I am the Akoua Studio assistant. How can I help you?",
     chat_q1: "What can I actually do in the studio?", chat_q2: "Which package fits me best?",
     chat_q3: "Can I meet a client here in privacy?", chat_q4: "Can I record a podcast here?",
@@ -596,6 +602,9 @@ const translations = {
     comm_cta: "✦ S'INSCRIRE · WHATSAPP 06 27 37 48 13 →",
     comm_note: "Places très limitées · Maximum 10 membres par programme · Cercle privé exclusif",
     chat_online: "· En ligne · Répond maintenant",
+    chat_title: "Assistant Akoua Studio",
+    chat_more: "Plus de questions ▾",
+    chat_placeholder: "Posez votre question…",
     chat_hello: "Bonjour! Je suis l'assistant d'Akoua Studio. Comment puis-je vous aider?",
     chat_q1: "Que puis-je faire dans le studio ?", chat_q2: "Quelle formule me convient le mieux ?",
     chat_q3: "Puis-je recevoir un client tranquillement ici ?", chat_q4: "Puis-je enregistrer un podcast ici ?",
@@ -807,6 +816,9 @@ const translations = {
     comm_cta: "✦ INSCRIBIRSE · WHATSAPP 06 27 37 48 13 →",
     comm_note: "Plazas muy limitadas · Máximo 10 miembros por programa · Círculo privado exclusivo",
     chat_online: "· En línea · Responde ahora",
+    chat_title: "Asistente Akoua Studio",
+    chat_more: "Más preguntas ▾",
+    chat_placeholder: "Haz tu pregunta…",
     chat_hello: "¡Hola! Soy el asistente de Akoua Studio. ¿Cómo puedo ayudarte?",
     chat_q1: "¿Qué puedo hacer exactamente en el estudio?", chat_q2: "¿Qué opción se adapta mejor a mí?",
     chat_q3: "¿Puedo recibir a un cliente aquí con tranquilidad?", chat_q4: "¿Puedo grabar un podcast aquí?",
@@ -870,6 +882,10 @@ function applyTranslations() {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if(t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if(t[key] !== undefined) el.setAttribute('placeholder', t[key]);
   });
 }
 
