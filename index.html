@@ -145,7 +145,7 @@ html, body {
       </div>
     </div>
     <div class="usage-gallery-cta">
-      <a href="diensten.html#zones" class="btn-outline">✦ Bekijk alle zones &amp; foto's</a>
+      <a href="#" class="btn-outline" onclick="event.preventDefault(); openGallery(0);">✦ Bekijk alle foto's van de studio</a>
     </div>
   </div>
 </section>
@@ -602,11 +602,31 @@ html, body {
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════════════
+     PHOTO GALLERY LIGHTBOX
+═══════════════════════════════════════════════ -->
+<div class="gallery-lightbox" id="gallery-lightbox">
+  <button class="gallery-close" onclick="closeGallery()" aria-label="Sluiten">✕</button>
+  <button class="gallery-nav gallery-prev" onclick="galleryNav(-1)" aria-label="Vorige">&lt;</button>
+  <div class="gallery-lightbox-content">
+    <img id="gallery-img" src="" alt="" />
+    <div class="gallery-caption">
+      <span id="gallery-caption-text"></span>
+      <a href="#tarieven" class="btn-gold-sm" onclick="closeGallery()">Reserveer nu →</a>
+    </div>
+    <div class="gallery-counter"><span id="gallery-counter-text"></span></div>
+  </div>
+  <button class="gallery-nav gallery-next" onclick="galleryNav(1)" aria-label="Volgende">&gt;</button>
+</div>
+
 <!-- FLOATING AI BUTTON -->
 <div class="float-ai-btn" id="chatbot-btn" onclick="toggleChat()" title="Assistant Akoua Studio">
   <span class="star-icon">✦</span>
   <span class="float-label">Aide</span>
 </div>
+
+<!-- FLOATING MOBILE BOOKING BUTTON -->
+<a href="#tarieven" class="float-book-btn" id="float-book-btn">✦ Boek nu</a>
 
 <div class="chatbot-box" id="chatbot-box">
   <div class="chat-header">
@@ -632,32 +652,59 @@ html, body {
 <script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
 <script>
-const lbImgs = ['studio-collage-1.jpg','zone-lounge-detail.jpg','zone-bureau-day.jpg','zone-meeting.jpg','zone-events.jpg','zone-detail.jpg','studio-collage-2.jpg','zone-podcast-1.jpg','zone-bureau-3.jpg','studio-overview.jpg','zone-lounge.jpg','zone-ambiance-night.jpg'];
-let lbIdx = 0;
-function openLightbox(img) {
-  const src = img.src.split('/').pop();
-  lbIdx = lbImgs.indexOf(src);
-  if(lbIdx === -1) lbIdx = 0;
-  document.getElementById('lightbox-img').src = img.src;
-  const lb = document.getElementById('lightbox');
-  lb.style.display = 'flex';
+const galleryPhotos = [
+  { src: 'gebruik-werkplek.jpg', caption: 'Werken in een professionele ruimte' },
+  { src: 'gebruik-ontvangst.jpg', caption: 'Klanten ontvangen in alle privacy' },
+  { src: 'gebruik-coaching.jpg', caption: 'Coaching & consult' },
+  { src: 'gebruik-podcast.jpg', caption: 'Podcast & content opnemen' },
+  { src: 'gebruik-fotografie.jpg', caption: "Foto's & video's maken" },
+  { src: 'gebruik-workshop.jpg', caption: 'Vergaderen & workshops' },
+  { src: 'studio-overview.jpg', caption: 'De studio in één oogopslag' },
+  { src: 'zone-lounge.jpg', caption: 'De Relax Lounge' },
+  { src: 'zone-studio.jpg', caption: 'Studio Photo & Video Zone' },
+  { src: 'zone-bureau-day.jpg', caption: 'Bureau & Présentation Zone' },
+  { src: 'zone-ambiance-night.jpg', caption: 'Ambiance Signature, \'s avonds' },
+  { src: 'zone-podcast-2.jpg', caption: 'Content Zone' },
+  { src: 'studio-collage-1.jpg', caption: 'Sfeerimpressie' },
+  { src: 'studio-collage-2.jpg', caption: 'Sfeerimpressie' },
+];
+let galleryIdx = 0;
+
+function openGallery(startIdx) {
+  galleryIdx = startIdx || 0;
+  updateGallery();
+  document.getElementById('gallery-lightbox').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
-function closeLightbox() {
-  document.getElementById('lightbox').style.display = 'none';
+function closeGallery() {
+  document.getElementById('gallery-lightbox').classList.remove('active');
   document.body.style.overflow = '';
 }
-function lightboxNav(dir) {
-  lbIdx = (lbIdx + dir + lbImgs.length) % lbImgs.length;
-  document.getElementById('lightbox-img').src = lbImgs[lbIdx];
+function galleryNav(dir) {
+  galleryIdx = (galleryIdx + dir + galleryPhotos.length) % galleryPhotos.length;
+  updateGallery();
+}
+function updateGallery() {
+  const p = galleryPhotos[galleryIdx];
+  document.getElementById('gallery-img').src = p.src;
+  document.getElementById('gallery-caption-text').textContent = p.caption;
+  document.getElementById('gallery-counter-text').textContent = `${galleryIdx + 1} / ${galleryPhotos.length}`;
 }
 document.addEventListener('keydown', e => {
-  if(document.getElementById('lightbox').style.display==='flex') {
-    if(e.key==='Escape') closeLightbox();
-    if(e.key==='ArrowRight') lightboxNav(1);
-    if(e.key==='ArrowLeft') lightboxNav(-1);
+  if (document.getElementById('gallery-lightbox').classList.contains('active')) {
+    if (e.key === 'Escape') closeGallery();
+    if (e.key === 'ArrowRight') galleryNav(1);
+    if (e.key === 'ArrowLeft') galleryNav(-1);
   }
 });
+
+const floatBookBtn = document.getElementById('float-book-btn');
+const heroEl = document.getElementById('home');
+if (floatBookBtn && heroEl) {
+  window.addEventListener('scroll', () => {
+    floatBookBtn.classList.toggle('visible', window.scrollY > heroEl.offsetHeight * 0.8);
+  }, { passive: true });
+}
 </script>
 </body>
 </html>
