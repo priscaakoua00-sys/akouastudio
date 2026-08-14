@@ -89,11 +89,50 @@ html, body {
       <a href="#tarieven" class="btn-gold">Bekijk beschikbaarheid &amp; boek nu</a>
       <a href="https://wa.me/31627374813?text=Hallo!%20Ik%20wil%20graag%20een%20gratis%20bezichtiging%20plannen." target="_blank" class="btn-outline">Plan een gratis bezichtiging</a>
     </div>
+    <button class="welcome-replay-link" id="welcome-replay-btn">▶ Bekijk de introductie</button>
   </div>
   <div class="hero-scroll-hint">
     <span></span>
   </div>
 </section>
+
+<!-- ═══════════════════════════════════════════════
+     WELCOME AVATAR EXPERIENCE
+═══════════════════════════════════════════════ -->
+<div class="welcome-overlay" id="welcome-overlay">
+  <button class="welcome-skip-btn" id="welcome-skip-btn">Passer</button>
+
+  <div class="welcome-lang-panel" id="welcome-lang-panel">
+    <div class="welcome-avatar-photo">
+      <img src="prisca-avatar.jpg" alt="Prisca, oprichter Akoua Studio" onerror="this.style.display='none'; this.parentElement.classList.add('no-photo');" />
+      <div class="welcome-avatar-fallback">P</div>
+    </div>
+    <p class="welcome-greeting">Bonjour · Hallo · Hi · Hola<br/>Je suis Prisca. Choisissez votre langue.</p>
+    <div class="welcome-lang-btns">
+      <button class="welcome-lang-btn" data-lang="fr">Français</button>
+      <button class="welcome-lang-btn" data-lang="nl">Nederlands</button>
+      <button class="welcome-lang-btn" data-lang="en">English</button>
+      <button class="welcome-lang-btn" data-lang="es">Español</button>
+    </div>
+  </div>
+
+  <div class="welcome-avatar-panel" id="welcome-avatar-panel">
+    <div class="welcome-photo-wrap">
+      <img src="" alt="Akoua Studio" id="welcome-photo" />
+    </div>
+    <div class="welcome-text-col">
+      <div class="welcome-avatar-photo welcome-avatar-photo-lg">
+        <img src="prisca-avatar.jpg" alt="Prisca, oprichter Akoua Studio" onerror="this.style.display='none'; this.parentElement.classList.add('no-photo');" />
+        <div class="welcome-avatar-fallback">P</div>
+        <div class="welcome-pulse-ring"></div>
+      </div>
+      <p class="welcome-caption" id="welcome-caption"></p>
+      <div class="welcome-progress-track"><div class="welcome-progress-bar" id="welcome-progress-bar"></div></div>
+      <button class="welcome-mute-btn" id="welcome-mute-btn" aria-label="Geluid dempen">🔊</button>
+      <a href="#boeken" class="welcome-cta" id="welcome-cta">Bekijk beschikbaarheid &amp; boek nu</a>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════════════
      WAT KUN JE HIER DOEN — GEBRUIKSFOTO'S
@@ -733,6 +772,238 @@ if (floatBookBtn && heroEl) {
     floatBookBtn.classList.toggle('visible', window.scrollY > heroEl.offsetHeight * 0.8);
   }, { passive: true });
 }
+
+// ═══════════════════════════════════════════════
+// WELCOME AVATAR EXPERIENCE
+// ═══════════════════════════════════════════════
+(function () {
+  const overlay = document.getElementById('welcome-overlay');
+  if (!overlay) return;
+
+  const WELCOME_KEY = 'akoua_welcome_seen_at';
+  const WELCOME_SUPPRESS_DAYS = 30;
+  const WPS = 2.3; // estimated words per second, natural speaking pace
+
+  const langPanel = document.getElementById('welcome-lang-panel');
+  const avatarPanel = document.getElementById('welcome-avatar-panel');
+  const captionEl = document.getElementById('welcome-caption');
+  const progressBar = document.getElementById('welcome-progress-bar');
+  const ctaBtn = document.getElementById('welcome-cta');
+  const photoEl = document.getElementById('welcome-photo');
+  const replayBtn = document.getElementById('welcome-replay-btn');
+  const skipBtn = document.getElementById('welcome-skip-btn');
+  const muteBtn = document.getElementById('welcome-mute-btn');
+
+  const scripts = {
+    fr: {
+      audio: 'audio/prisca-welcome-fr.mp3',
+      segments: [
+        "Bonjour, je suis Prisca, fondatrice d'Akoua Studio.",
+        "Ici à Roosendaal, vous réservez un espace 100% privé, à l'heure ou à la journée,",
+        "pour travailler, recevoir vos clients, tourner du contenu ou organiser une réunion.",
+        "Lumière naturelle, parking gratuit, jusqu'à 15 personnes, à partir de 60€ de l'heure.",
+        "Pas d'engagement, juste l'espace dont vous avez besoin, quand vous en avez besoin."
+      ]
+    },
+    nl: {
+      audio: 'audio/prisca-welcome-nl.mp3',
+      segments: [
+        "Hallo, ik ben Prisca, oprichter van Akoua Studio.",
+        "Hier in Roosendaal reserveer je een 100% privéruimte, per uur of per dag,",
+        "om te werken, klanten te ontvangen, content te maken of te vergaderen.",
+        "Veel natuurlijk licht, gratis parkeren, tot 15 personen, vanaf 60 euro per uur.",
+        "Geen abonnement, gewoon de ruimte die je nodig hebt, wanneer je die nodig hebt."
+      ]
+    },
+    en: {
+      audio: 'audio/prisca-welcome-en.mp3',
+      segments: [
+        "Hi, I'm Prisca, founder of Akoua Studio.",
+        "Here in Roosendaal, you book a 100% private space, by the hour or by the day,",
+        "to work, meet clients, create content or hold a meeting.",
+        "Natural light, free parking, room for up to 15 people, from €60 an hour.",
+        "No subscription, just the space you need, exactly when you need it."
+      ]
+    },
+    es: {
+      audio: 'audio/prisca-welcome-es.mp3',
+      segments: [
+        "Hola, soy Prisca, fundadora de Akoua Studio.",
+        "Aquí en Roosendaal, reservas un espacio 100% privado, por hora o por día,",
+        "para trabajar, recibir clientes, crear contenido o hacer una reunión.",
+        "Luz natural, parking gratuito, capacidad hasta 15 personas, desde 60€ la hora.",
+        "Sin compromiso, solo el espacio que necesitas, cuando lo necesitas."
+      ]
+    }
+  };
+  const ctaLabels = {
+    fr: 'Voir disponibilité & réserver',
+    nl: 'Bekijk beschikbaarheid & boek nu',
+    en: 'View availability & book now',
+    es: 'Ver disponibilidad y reservar'
+  };
+  const skipLabels = { fr: 'Passer', nl: 'Overslaan', en: 'Skip', es: 'Omitir' };
+  const replayLabels = {
+    fr: '▶ Revoir la présentation',
+    nl: '▶ Bekijk de introductie',
+    en: '▶ Watch the introduction',
+    es: '▶ Ver la presentación'
+  };
+
+  const photoSequence = [
+    'studio-overview.jpg', 'gebruik-werkplek.jpg', 'gebruik-ontvangst.jpg',
+    'gebruik-fotografie.jpg', 'gebruik-podcast.jpg', 'gebruik-workshop.jpg',
+    'zone-lounge-detail.jpg', 'studio-collage-1.jpg'
+  ];
+
+  let currentAudio = null;
+  let timers = [];
+  let photoTimer = null;
+  let activeWelcomeLang = 'nl';
+
+  function clearAllTimers() {
+    timers.forEach(t => clearTimeout(t));
+    timers = [];
+    if (photoTimer) { clearInterval(photoTimer); photoTimer = null; }
+  }
+
+  function computeSegmentTimings(segments) {
+    let t = 0;
+    return segments.map(text => {
+      const words = text.split(/\s+/).length;
+      const start = t;
+      t += words / WPS;
+      return { text, start };
+    });
+  }
+
+  function shouldShowWelcome() {
+    try {
+      const seenAt = localStorage.getItem(WELCOME_KEY);
+      if (!seenAt) return true;
+      const days = (Date.now() - parseInt(seenAt, 10)) / 86400000;
+      return days > WELCOME_SUPPRESS_DAYS;
+    } catch (e) { return true; }
+  }
+  function markWelcomeSeen() {
+    try { localStorage.setItem(WELCOME_KEY, Date.now().toString()); } catch (e) {}
+  }
+
+  function openWelcome(skipToLang) {
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    ctaBtn.classList.remove('visible');
+    if (skipToLang && scripts[skipToLang]) {
+      langPanel.classList.add('hidden');
+      avatarPanel.classList.add('active');
+      startLang(skipToLang);
+    } else {
+      langPanel.classList.remove('hidden');
+      avatarPanel.classList.remove('active');
+    }
+  }
+  function closeWelcome() {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    clearAllTimers();
+    if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+    markWelcomeSeen();
+  }
+
+  function revealCta(lang) {
+    ctaBtn.textContent = ctaLabels[lang] || ctaLabels.nl;
+    ctaBtn.classList.add('visible');
+    if (photoTimer) { clearInterval(photoTimer); photoTimer = null; }
+  }
+
+  function startPhotoCarousel(totalDuration) {
+    let idx = 0;
+    photoEl.src = photoSequence[0];
+    const interval = Math.max(1500, (totalDuration * 1000) / photoSequence.length);
+    photoTimer = setInterval(() => {
+      idx = (idx + 1) % photoSequence.length;
+      photoEl.src = photoSequence[idx];
+    }, interval);
+  }
+
+  function startLang(lang) {
+    clearAllTimers();
+    if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+
+    activeWelcomeLang = lang;
+    langPanel.classList.add('hidden');
+    avatarPanel.classList.add('active');
+    skipBtn.textContent = skipLabels[lang] || 'Skip';
+
+    const timings = computeSegmentTimings(scripts[lang].segments);
+    const estimatedTotal = timings[timings.length - 1].start + 2.5;
+    captionEl.textContent = timings[0].text;
+    startPhotoCarousel(estimatedTotal);
+
+    let timelineStarted = false;
+    function runTimeline(totalDuration) {
+      if (timelineStarted) return;
+      timelineStarted = true;
+      const scale = totalDuration / estimatedTotal;
+      timings.forEach(seg => {
+        const id = setTimeout(() => { captionEl.textContent = seg.text; }, seg.start * scale * 1000);
+        timers.push(id);
+      });
+      progressBar.style.transition = 'none';
+      progressBar.style.width = '0%';
+      requestAnimationFrame(() => {
+        progressBar.style.transition = `width ${totalDuration}s linear`;
+        progressBar.style.width = '100%';
+      });
+      const endId = setTimeout(() => revealCta(lang), totalDuration * 1000);
+      timers.push(endId);
+    }
+
+    currentAudio = new Audio(scripts[lang].audio);
+    currentAudio.addEventListener('loadedmetadata', () => {
+      if (isFinite(currentAudio.duration) && currentAudio.duration > 0.5) {
+        runTimeline(currentAudio.duration);
+      }
+    });
+    currentAudio.play().catch(() => runTimeline(estimatedTotal));
+    timers.push(setTimeout(() => runTimeline(estimatedTotal), 1200));
+  }
+
+  document.querySelectorAll('.welcome-lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => startLang(btn.dataset.lang));
+  });
+  skipBtn.addEventListener('click', () => {
+    clearAllTimers();
+    if (currentAudio) currentAudio.pause();
+    if (avatarPanel.classList.contains('active')) {
+      revealCta(activeWelcomeLang);
+    } else {
+      closeWelcome();
+    }
+  });
+  ctaBtn.addEventListener('click', () => { closeWelcome(); });
+  muteBtn.addEventListener('click', () => {
+    if (!currentAudio) return;
+    currentAudio.muted = !currentAudio.muted;
+    muteBtn.textContent = currentAudio.muted ? '🔇' : '🔊';
+  });
+  if (replayBtn) {
+    replayBtn.addEventListener('click', () => {
+      const lang = (typeof currentLang !== 'undefined' && scripts[currentLang]) ? currentLang : 'nl';
+      openWelcome(lang);
+    });
+    const refreshReplayLabel = () => {
+      const lang = (typeof currentLang !== 'undefined' && replayLabels[currentLang]) ? currentLang : 'nl';
+      replayBtn.textContent = replayLabels[lang];
+    };
+    refreshReplayLabel();
+    document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', refreshReplayLabel));
+  }
+
+  if (shouldShowWelcome()) {
+    setTimeout(() => openWelcome(), 600);
+  }
+})();
 </script>
 </body>
 </html>
