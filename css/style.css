@@ -81,10 +81,16 @@ ul { list-style: none; }
 }
 .navbar.scrolled {
   top: 0;
-  background: rgba(10,10,10,0.97);
-  backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--gold-border);
   box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+}
+.navbar.scrolled::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(10,10,10,0.97);
+  backdrop-filter: blur(16px);
 }
 .nav-logo { display: flex; flex-direction: column; }
 .logo-text {
@@ -115,6 +121,7 @@ ul { list-style: none; }
   transition: var(--transition);
   position: relative;
   white-space: nowrap;
+  touch-action: manipulation;
 }
 .nav-links a::after {
   content: '';
@@ -210,6 +217,10 @@ ul { list-style: none; }
   border: none;
   cursor: pointer;
   padding: 4px;
+  position: relative;
+  touch-action: manipulation;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .hamburger span {
   display: block;
