@@ -669,6 +669,13 @@ html, body {
 <!-- FLOATING MOBILE BOOKING BUTTON -->
 <a href="#boeken" class="float-book-btn" id="float-book-btn">✦ Boek nu</a>
 
+<!-- SMART BOOKING NUDGE -->
+<div class="booking-nudge" id="booking-nudge">
+  <button class="booking-nudge-close" id="booking-nudge-close" aria-label="Sluiten">✕</button>
+  <p class="booking-nudge-text" id="booking-nudge-text"></p>
+  <a href="#boeken" class="booking-nudge-btn" id="booking-nudge-btn"></a>
+</div>
+
 <div class="chatbot-box" id="chatbot-box">
   <div class="chat-header">
     <span class="chat-dot"></span>
@@ -893,6 +900,7 @@ if (floatBookBtn && heroEl) {
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
     ctaBtn.classList.remove('visible');
+    if (typeof trackEvent === 'function') trackEvent('avatar_open', {});
     if (skipToLang && scripts[skipToLang]) {
       langPanel.classList.add('hidden');
       avatarPanel.classList.add('active');
@@ -914,6 +922,7 @@ if (floatBookBtn && heroEl) {
     ctaBtn.textContent = ctaLabels[lang] || ctaLabels.nl;
     ctaBtn.classList.add('visible');
     if (photoTimer) { clearInterval(photoTimer); photoTimer = null; }
+    if (typeof trackEvent === 'function') trackEvent('avatar_complete', { lang });
   }
 
   function startPhotoCarousel(totalDuration) {
@@ -934,6 +943,10 @@ if (floatBookBtn && heroEl) {
     langPanel.classList.add('hidden');
     avatarPanel.classList.add('active');
     skipBtn.textContent = skipLabels[lang] || 'Skip';
+    if (typeof trackEvent === 'function') {
+      trackEvent('avatar_language_selected', { lang });
+      trackEvent('avatar_play', { lang });
+    }
 
     const timings = computeSegmentTimings(scripts[lang].segments);
     const estimatedTotal = timings[timings.length - 1].start + 2.5;

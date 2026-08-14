@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bedankt · Akoua Studio</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/jpeg" href="logo-gold.jpg">
+  <link rel="apple-touch-icon" href="logo-gold.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+<!-- Google Ads Conversion Tracking -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18139302392"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18139302392');
+</script>
+<style>
+  body { background: var(--black); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem; text-align: center; }
+  .thanks-box { max-width: 480px; }
+  .thanks-icon { font-size: 2.4rem; color: var(--gold); margin-bottom: 1.2rem; }
+  .thanks-title { font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--white); margin-bottom: 1rem; line-height: 1.4; }
+  .thanks-text { color: var(--white-dim); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem; }
+  .thanks-btn { display: inline-block; background: var(--gold); color: var(--black); font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.12em; padding: 14px 28px; border-radius: 2px; transition: var(--transition); }
+  .thanks-btn:hover { background: var(--gold-light); }
+</style>
+</head>
+<body>
+  <div class="thanks-box">
+    <div class="thanks-icon">✦</div>
+    <h1 class="thanks-title" id="thanks-title">Bedankt voor je reservering</h1>
+    <p class="thanks-text" id="thanks-text">Je betaling is ontvangen. We hebben je reservering genoteerd en sturen je een bevestiging per e-mail. Tot snel bij Akoua Studio.</p>
+    <a href="index.html" class="thanks-btn" id="thanks-btn">Terug naar de website</a>
+  </div>
+
+<script src="js/i18n.js"></script>
+<script>
+  const labels = {
+    nl: { title: 'Bedankt voor je reservering', text: 'Je betaling is ontvangen. We hebben je reservering genoteerd en sturen je een bevestiging per e-mail. Tot snel bij Akoua Studio.', btn: 'Terug naar de website' },
+    fr: { title: 'Merci pour votre réservation', text: 'Votre paiement a bien été reçu. Votre réservation est enregistrée et vous recevrez une confirmation par e-mail. À bientôt chez Akoua Studio.', btn: 'Retour au site' },
+    en: { title: 'Thank you for your booking', text: 'Your payment has been received. Your booking is confirmed and you will receive a confirmation email. See you soon at Akoua Studio.', btn: 'Back to the website' },
+    es: { title: 'Gracias por tu reserva', text: 'Tu pago ha sido recibido. Tu reserva está registrada y recibirás una confirmación por correo electrónico. Hasta pronto en Akoua Studio.', btn: 'Volver al sitio web' }
+  };
+  const lang = (typeof currentLang !== 'undefined' && labels[currentLang]) ? currentLang : (navigator.language || 'nl').slice(0, 2);
+  const l = labels[lang] || labels.nl;
+  document.getElementById('thanks-title').textContent = l.title;
+  document.getElementById('thanks-text').textContent = l.text;
+  document.getElementById('thanks-btn').textContent = l.btn;
+
+  // This page only loads after a visitor returns from the Mollie payment link,
+  // which only happens once a payment has actually gone through.
+  try {
+    if (typeof gtag === 'function') {
+      gtag('event', 'payment_success', { lang });
+    }
+  } catch (e) {}
+</script>
+</body>
+</html>

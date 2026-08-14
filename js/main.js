@@ -1,3 +1,10 @@
+// ── CONVERSION TRACKING ──
+function trackEvent(name, params) {
+  try {
+    if (typeof gtag === 'function') gtag('event', name, params || {});
+  } catch (e) {}
+}
+
 // ── SUPABASE CONFIG ──
 const SUPA_URL = 'https://cbvbvyudwstcbkhjcqav.supabase.co';
 const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNidmJ2eXVkd3N0Y2JraGpjcWF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2NTczNjksImV4cCI6MjA5MzIzMzM2OX0.jVfyvEgcmT8ettrjl65eyS1P-WPSGHc1tPanH6jlFOA';
@@ -134,6 +141,17 @@ function openBooking(name, price, duration) {
   document.getElementById('form-date').min = today;
   document.getElementById('modal-overlay').classList.add('active');
   document.body.style.overflow = 'hidden';
+  trackEvent('booking_open', { package: name, price, duration });
+  const dateInput = document.getElementById('form-date');
+  const timeInput = document.getElementById('form-time');
+  if (dateInput && !dateInput.dataset.tracked) {
+    dateInput.dataset.tracked = '1';
+    dateInput.addEventListener('change', () => trackEvent('date_selected', { package: currentPackage.name }));
+  }
+  if (timeInput && !timeInput.dataset.tracked) {
+    timeInput.dataset.tracked = '1';
+    timeInput.addEventListener('change', () => trackEvent('time_selected', { package: currentPackage.name }));
+  }
 }
 
 function closeBooking() {
@@ -206,6 +224,7 @@ async function submitBooking() {
   //    very likely causing real bookings to be lost without anyone noticing.
   const mollieUrl = mollieLinks[currentPackage.name];
   if (mollieUrl) {
+    trackEvent('checkout_start', { package: currentPackage.name, price: currentPackage.price });
     window.location.href = mollieUrl;
   }
 }
@@ -308,13 +327,17 @@ async function submitAbo() {
   };
   const mollieUrl = mollieAbo[currentAbo.name];
   if (mollieUrl) {
+    trackEvent('checkout_start', { package: currentAbo.name, price: currentAbo.price });
     window.location.href = mollieUrl;
   }
 }
 
 // ── CHATBOT ──
 function toggleChat() {
-  document.getElementById('chatbot-box').classList.toggle('open');
+  const box = document.getElementById('chatbot-box');
+  const isOpening = !box.classList.contains('open');
+  box.classList.toggle('open');
+  if (isOpening) trackEvent('ai_open', {});
 }
 
 const chatAnswers = {
@@ -357,7 +380,108 @@ function chatAnswer(key) {
   const el = document.getElementById('chat-answer');
   el.textContent = answers[key] || '';
   el.classList.add('visible');
+  trackEvent('ai_question', { topic: key });
 }
+
+// ── CONVERSION FUNNEL TRACKING ──
+document.addEventListener('click', (e) => {
+  const waLink = e.target.closest('a[href*="wa.me"]');
+  if (waLink) trackEvent('whatsapp_click', { page: location.pathname });
+  const heroBookBtn = e.target.closest('.hero-btns .btn-gold');
+  if (heroBookBtn) trackEvent('hero_book_click', {});
+});
+
+const pricingSection = document.getElementById('tarieven');
+if (pricingSection && 'IntersectionObserver' in window) {
+  let pricingSeen = false;
+  const pricingObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !pricingSeen) {
+        pricingSeen = true;
+        trackEvent('pricing_view', {});
+        pricingObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  pricingObserver.observe(pricingSection);
+}
+document.querySelectorAll('.price-card, .book-opt').forEach(card => {
+  card.addEventListener('click', () => {
+    trackEvent('package_view', { label: card.textContent.trim().slice(0, 40) });
+  }, { once: false });
+});
+
+// ── SMART BOOKING NUDGE (real engagement signals only, once per session) ──
+(function () {
+  const nudge = document.getElementById('booking-nudge');
+  if (!nudge) return;
+  const NUDGE_SESSION_KEY = 'akoua_nudge_shown';
+  if (sessionStorage.getItem(NUDGE_SESSION_KEY)) return;
+
+  const nudgeText = document.getElementById('booking-nudge-text');
+  const nudgeBtn = document.getElementById('booking-nudge-btn');
+  const nudgeClose = document.getElementById('booking-nudge-close');
+
+  const nudgeLabels = {
+    nl: { text: 'Heb je gevonden wat je zocht? Bekijk de beschikbaarheid in een paar seconden.', btn: 'Bekijk beschikbaarheid' },
+    fr: { text: "Vous avez trouvé ce qu'il vous faut ? Vérifiez les disponibilités en quelques secondes.", btn: 'Voir les disponibilités' },
+    en: { text: 'Found what you need? Check availability in a few seconds.', btn: 'View availability' },
+    es: { text: '¿Encontraste lo que necesitas? Consulta la disponibilidad en unos segundos.', btn: 'Ver disponibilidad' }
+  };
+
+  let galleryNavClicks = 0;
+  let shown = false;
+  const pageLoadTime = Date.now();
+  const MIN_DELAY_MS = 15000;
+
+  function showNudge() {
+    if (shown || sessionStorage.getItem(NUDGE_SESSION_KEY)) return;
+    const elapsed = Date.now() - pageLoadTime;
+    if (elapsed < MIN_DELAY_MS) { setTimeout(showNudge, MIN_DELAY_MS - elapsed); return; }
+    shown = true;
+    sessionStorage.setItem(NUDGE_SESSION_KEY, '1');
+    const lang = (typeof currentLang !== 'undefined' && nudgeLabels[currentLang]) ? currentLang : 'nl';
+    nudgeText.textContent = nudgeLabels[lang].text;
+    nudgeBtn.textContent = nudgeLabels[lang].btn;
+    nudge.classList.add('visible');
+    trackEvent('booking_nudge_shown', { lang });
+  }
+
+  try {
+    if (localStorage.getItem('akoua_welcome_seen_at')) setTimeout(showNudge, MIN_DELAY_MS);
+  } catch (e) {}
+
+  const pricingSection = document.getElementById('tarieven');
+  if (pricingSection && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { showNudge(); obs.disconnect(); } });
+    }, { threshold: 0.4 });
+    obs.observe(pricingSection);
+  }
+
+  const chatBtn = document.getElementById('chatbot-btn');
+  if (chatBtn) chatBtn.addEventListener('click', () => setTimeout(showNudge, 3000));
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.gallery-nav')) {
+      galleryNavClicks++;
+      if (galleryNavClicks >= 3) showNudge();
+    }
+  });
+
+  document.querySelectorAll('.price-card, .book-opt, .usage-card').forEach(el => {
+    el.addEventListener('click', () => setTimeout(showNudge, 2000));
+  });
+
+  if (nudgeClose) nudgeClose.addEventListener('click', () => {
+    nudge.classList.remove('visible');
+    trackEvent('booking_nudge_dismiss', {});
+  });
+  if (nudgeBtn) nudgeBtn.addEventListener('click', () => {
+    nudge.classList.remove('visible');
+    trackEvent('booking_nudge_click', {});
+  });
+})();
 
 // ── SMOOTH SCROLL ──
 document.querySelectorAll('a[href^="#"]').forEach(a => {
