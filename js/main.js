@@ -337,7 +337,22 @@ function toggleChat() {
   const box = document.getElementById('chatbot-box');
   const isOpening = !box.classList.contains('open');
   box.classList.toggle('open');
+  document.body.style.overflow = isOpening ? 'hidden' : '';
   if (isOpening) trackEvent('ai_open', {});
+}
+
+function toggleMoreQuestions() {
+  const more = document.getElementById('chat-btns-more');
+  const btn = document.getElementById('chat-more-btn');
+  const isVisible = more.classList.toggle('visible');
+  const labels = {
+    nl: { more: 'Meer vragen ▾', less: 'Minder vragen ▴' },
+    fr: { more: 'Plus de questions ▾', less: 'Moins de questions ▴' },
+    en: { more: 'More questions ▾', less: 'Fewer questions ▴' },
+    es: { more: 'Más preguntas ▾', less: 'Menos preguntas ▴' }
+  };
+  const lang = (typeof currentLang !== 'undefined' && labels[currentLang]) ? currentLang : 'nl';
+  btn.textContent = isVisible ? labels[lang].less : labels[lang].more;
 }
 
 const chatAnswers = {
@@ -404,7 +419,102 @@ function chatAnswer(key) {
   const el = document.getElementById('chat-answer');
   el.textContent = answers[key] || '';
   el.classList.add('visible');
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   trackEvent('ai_question', { topic: key });
+}
+
+const chatKeywords = {
+  nl: {
+    gebruik: ['wat kan', 'gebruik', 'mogelijk', 'doen in'],
+    keuze: ['welke', 'wat past', 'beste voor', 'kies', 'aanraden'],
+    klant: ['klant', 'cliënt'],
+    podcast: ['podcast'],
+    fotovideo: ['foto', 'video', 'shoot', 'opname maken'],
+    personen: ['personen', 'mensen', 'hoeveel zijn', 'capaciteit', 'groep'],
+    inbegrepen: ['inbegrepen', 'inclusief', 'krijg ik'],
+    bezichtiging: ['bezichtig', 'komen kijken', 'bezoek', 'rondleid'],
+    parkeren: ['park'],
+    snelheid: ['hoe snel', 'hoe lang duurt', 'wanneer kan'],
+    tarieven: ['tarie', 'prijs', 'kost', 'euro', '€'],
+    betaling: ['betal', 'mollie', 'ideal', 'kaart', 'apple pay']
+  },
+  fr: {
+    gebruik: ['que puis', 'faire dans', 'possible', 'utiliser'],
+    keuze: ['quelle formule', 'quel forfait', 'me convient', 'conseil', 'recommand'],
+    klant: ['client'],
+    podcast: ['podcast'],
+    fotovideo: ['photo', 'vidéo', 'shooting', 'tournage'],
+    personen: ['personnes', 'combien', 'capacité', 'groupe'],
+    inbegrepen: ['inclus', 'compris'],
+    bezichtiging: ['visite', 'venir voir', 'visiter'],
+    parkeren: ['parking', 'garer', 'se garer'],
+    snelheid: ['combien de temps', 'rapide', 'quand'],
+    tarieven: ['tarif', 'prix', 'coût', 'euro', '€'],
+    betaling: ['paiement', 'payer', 'mollie', 'ideal', 'carte']
+  },
+  en: {
+    gebruik: ['what can i', 'can i do', 'possible', 'use the studio'],
+    keuze: ['which package', 'which option', 'best for', 'recommend', 'suits me'],
+    klant: ['client'],
+    podcast: ['podcast'],
+    fotovideo: ['photo', 'video', 'shoot', 'shooting'],
+    personen: ['people', 'how many', 'capacity', 'group'],
+    inbegrepen: ['included', 'include', 'do i get'],
+    bezichtiging: ['visit', 'take a look', 'come see', 'tour'],
+    parkeren: ['park'],
+    snelheid: ['how fast', 'how long', 'how quickly', 'when can'],
+    tarieven: ['rate', 'price', 'cost', 'euro', '€'],
+    betaling: ['payment', 'pay', 'mollie', 'ideal', 'card']
+  },
+  es: {
+    gebruik: ['qué puedo', 'hacer en', 'posible', 'usar el estudio'],
+    keuze: ['qué opción', 'qué paquete', 'mejor para', 'recomien', 'conviene'],
+    klant: ['cliente'],
+    podcast: ['podcast'],
+    fotovideo: ['foto', 'vídeo', 'video', 'sesión'],
+    personen: ['personas', 'cuántas', 'capacidad', 'grupo'],
+    inbegrepen: ['incluye', 'incluido'],
+    bezichtiging: ['visita', 'venir a ver', 'visitar'],
+    parkeren: ['aparcar', 'parking'],
+    snelheid: ['qué tan rápido', 'cuánto tarda', 'cuándo puedo'],
+    tarieven: ['tarifa', 'precio', 'coste', 'euro', '€'],
+    betaling: ['pago', 'pagar', 'mollie', 'ideal', 'tarjeta']
+  }
+};
+
+const chatFallback = {
+  nl: 'Goede vraag! Dat kan ik nu nog niet automatisch beantwoorden, maar stuur het gerust via WhatsApp, dan helpt Prisca je persoonlijk verder.',
+  fr: "Bonne question ! Je ne peux pas encore y répondre automatiquement, mais envoyez-la simplement via WhatsApp, Prisca vous aidera personnellement.",
+  en: "Good question! I can't answer that automatically yet, but feel free to send it via WhatsApp, Prisca will help you personally.",
+  es: '¡Buena pregunta! Todavía no puedo responder eso automáticamente, pero envíala por WhatsApp, Prisca te ayudará personalmente.'
+};
+
+function submitFreeText() {
+  const input = document.getElementById('chat-freetext');
+  const raw = input.value.trim();
+  if (!raw) return;
+  const text = raw.toLowerCase();
+  const lang = (typeof currentLang !== 'undefined' && chatKeywords[currentLang]) ? currentLang : 'nl';
+  const kw = chatKeywords[lang];
+  let matchedKey = null;
+  for (const key in kw) {
+    if (kw[key].some(k => text.includes(k))) { matchedKey = key; break; }
+  }
+  input.value = '';
+  if (matchedKey) {
+    chatAnswer(matchedKey);
+  } else {
+    trackEvent('ai_question', { topic: 'unmatched' });
+    const el = document.getElementById('chat-answer');
+    const waUrl = 'https://wa.me/31627374813?text=' + encodeURIComponent(raw);
+    el.innerHTML = (chatFallback[lang] || chatFallback.nl) + ' <a href="' + waUrl + '" target="_blank" class="chat-wa-link">WhatsApp →</a>';
+    el.classList.add('visible');
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+const freeTextInput = document.getElementById('chat-freetext');
+if (freeTextInput) {
+  freeTextInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') submitFreeText(); });
 }
 
 // ── CONVERSION FUNNEL TRACKING ──
