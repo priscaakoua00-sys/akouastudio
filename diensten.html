@@ -92,7 +92,7 @@ html, body {
     <span class="section-label center" data-i18n="zones_label">DE 5 ZONES</span>
     <h2 class="section-title center" data-i18n="zones_title">Alles wat je nodig hebt<br/><em>Om te Schitteren</em></h2>
     <div class="zones-grid">
-      <div class="zone-card">
+      <div class="zone-card" onclick="openGallery('lounge')">
         <img src="zone-lounge.jpg" alt="Relax Lounge" loading="lazy" />
         <div class="zone-overlay">
           <span class="zone-num">01</span>
@@ -101,7 +101,7 @@ html, body {
           <div class="zone-tags"><span>VIP ONTVANGST</span><span>MINI BAR</span></div>
         </div>
       </div>
-      <div class="zone-card featured">
+      <div class="zone-card featured" onclick="openGallery('fotografie')">
         <img src="zone-studio.jpg" alt="Studio Photo Video" loading="lazy" />
         <div class="zone-overlay">
           <span class="zone-num">02</span>
@@ -110,7 +110,7 @@ html, body {
           <div class="zone-tags"><span>WIT</span><span>GROEN</span><span>ZWART</span></div>
         </div>
       </div>
-      <div class="zone-card">
+      <div class="zone-card" onclick="openGallery('fotografie')">
         <img src="zone-bureau-pro.jpg" alt="Bureau Presentation" loading="lazy" />
         <div class="zone-overlay">
           <span class="zone-num">03</span>
@@ -119,7 +119,7 @@ html, body {
           <div class="zone-tags"><span>MAX 15 PERSONEN</span><span>PRIVÉ</span></div>
         </div>
       </div>
-      <div class="zone-card">
+      <div class="zone-card" onclick="openGallery('lounge')">
         <img src="zone-ambiance-night.jpg" alt="Ambiance Signature" loading="lazy" />
         <div class="zone-overlay">
           <span class="zone-num">04</span>
@@ -128,7 +128,7 @@ html, body {
           <div class="zone-tags"><span>MODULEERBARE SFEER</span></div>
         </div>
       </div>
-      <div class="zone-card">
+      <div class="zone-card" onclick="openGallery('podcast')">
         <img src="zone-podcast-2.jpg" alt="Content Zone" loading="lazy" />
         <div class="zone-overlay">
           <span class="zone-num">05</span>
@@ -137,6 +137,9 @@ html, body {
           <div class="zone-tags"><span>TIKTOK</span><span>REELS</span><span>YOUTUBE</span></div>
         </div>
       </div>
+    </div>
+    <div class="usage-gallery-cta">
+      <a href="#" class="btn-outline" onclick="event.preventDefault(); openGallery('all');">✦ Bekijk alle foto's van de studio</a>
     </div>
     <div class="related-links">
       <p>Meer weten over een specifieke zone? Bekijk de uitgebreide gids:</p>
@@ -538,6 +541,22 @@ html, body {
   </div>
 </div>
 
+<!-- PHOTO GALLERY LIGHTBOX -->
+<div class="gallery-lightbox" id="gallery-lightbox">
+  <button class="gallery-close" onclick="closeGallery()" aria-label="Sluiten">✕</button>
+  <div class="gallery-filters" id="gallery-filters"></div>
+  <button class="gallery-nav gallery-prev" onclick="galleryNav(-1)" aria-label="Vorige">&lt;</button>
+  <div class="gallery-lightbox-content">
+    <img id="gallery-img" src="" alt="" />
+    <div class="gallery-caption">
+      <span id="gallery-caption-text"></span>
+      <a href="index.html#boeken" class="btn-gold-sm">Reserveer nu →</a>
+    </div>
+    <div class="gallery-counter"><span id="gallery-counter-text"></span></div>
+  </div>
+  <button class="gallery-nav gallery-next" onclick="galleryNav(1)" aria-label="Volgende">&gt;</button>
+</div>
+
 <!-- FLOATING AI BUTTON -->
 <div class="float-ai-btn" id="chatbot-btn" onclick="toggleChat()" title="Assistant Akoua Studio">
   <span class="star-icon">✦</span>
@@ -568,30 +587,75 @@ html, body {
 <script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
 <script>
-const lbImgs = ['studio-collage-1.jpg','zone-lounge-detail.jpg','zone-bureau-day.jpg','zone-meeting.jpg','zone-events.jpg','zone-detail.jpg','studio-collage-2.jpg','zone-podcast-1.jpg','zone-bureau-3.jpg','studio-overview.jpg','zone-lounge.jpg','zone-ambiance-night.jpg'];
-let lbIdx = 0;
-function openLightbox(img) {
-  const src = img.src.split('/').pop();
-  lbIdx = lbImgs.indexOf(src);
-  if(lbIdx === -1) lbIdx = 0;
-  document.getElementById('lightbox-img').src = img.src;
-  const lb = document.getElementById('lightbox');
-  lb.style.display = 'flex';
+const galleryPhotos = [
+  { src: 'gebruik-werkplek.jpg', caption: 'Werken in een professionele ruimte', cat: 'werkplek' },
+  { src: 'gebruik-ontvangst.jpg', caption: 'Klanten ontvangen in alle privacy', cat: 'werkplek' },
+  { src: 'zone-bureau-day.jpg', caption: 'Bureau zone, overdag', cat: 'werkplek' },
+  { src: 'gebruik-coaching.jpg', caption: 'Coaching & consult', cat: 'coaching' },
+  { src: 'gebruik-podcast.jpg', caption: 'Podcast & content opnemen', cat: 'podcast' },
+  { src: 'zone-bureau-3.jpg', caption: 'Podcast opstelling, close-up', cat: 'podcast' },
+  { src: 'zone-podcast-1.jpg', caption: 'Content Zone, volledig zicht', cat: 'podcast' },
+  { src: 'zone-podcast-2.jpg', caption: 'Content Zone', cat: 'podcast' },
+  { src: 'gebruik-fotografie.jpg', caption: "Foto's & video's maken", cat: 'fotografie' },
+  { src: 'zone-studio.jpg', caption: 'Studio Photo & Video Zone', cat: 'fotografie' },
+  { src: 'zone-bureau-pro.jpg', caption: 'Portretshoot met studioverlichting', cat: 'fotografie' },
+  { src: 'gebruik-workshop.jpg', caption: 'Vergaderen & workshops', cat: 'meetings' },
+  { src: 'zone-events.jpg', caption: 'Opstelling voor events & workshops', cat: 'meetings' },
+  { src: 'zone-meeting.jpg', caption: 'Vergaderhoek met bureau', cat: 'meetings' },
+  { src: 'zone-lounge.jpg', caption: 'De Relax Lounge', cat: 'lounge' },
+  { src: 'zone-lounge-detail.jpg', caption: 'Relax Lounge, in detail', cat: 'lounge' },
+  { src: 'zone-detail.jpg', caption: 'Lounge hoek met bureau', cat: 'lounge' },
+  { src: 'studio-overview.jpg', caption: 'De studio in één oogopslag', cat: 'lounge' },
+  { src: 'studio-collage-1.jpg', caption: 'Sfeerimpressie', cat: 'lounge' },
+  { src: 'studio-collage-2.jpg', caption: 'Sfeerimpressie', cat: 'lounge' },
+  { src: 'zone-ambiance-night.jpg', caption: "Ambiance Signature, 's avonds", cat: 'lounge' },
+];
+const galleryCats = [
+  { key: 'all', label: "Alle foto's" },
+  { key: 'werkplek', label: 'Werken & Ontvangen' },
+  { key: 'coaching', label: 'Coaching' },
+  { key: 'podcast', label: 'Podcast' },
+  { key: 'fotografie', label: 'Fotografie' },
+  { key: 'meetings', label: 'Meetings & Events' },
+  { key: 'lounge', label: 'Lounge & Sfeer' },
+];
+let galleryIdx = 0;
+let galleryList = galleryPhotos;
+
+document.getElementById('gallery-filters').innerHTML = galleryCats.map(c =>
+  `<button class="gallery-filter-btn" data-cat="${c.key}" onclick="setGalleryFilter('${c.key}')">${c.label}</button>`
+).join('');
+
+function setGalleryFilter(cat) {
+  galleryList = cat === 'all' ? galleryPhotos : galleryPhotos.filter(p => p.cat === cat);
+  galleryIdx = 0;
+  document.querySelectorAll('.gallery-filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  updateGallery();
+}
+function openGallery(cat) {
+  setGalleryFilter(cat || 'all');
+  document.getElementById('gallery-lightbox').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
-function closeLightbox() {
-  document.getElementById('lightbox').style.display = 'none';
+function closeGallery() {
+  document.getElementById('gallery-lightbox').classList.remove('active');
   document.body.style.overflow = '';
 }
-function lightboxNav(dir) {
-  lbIdx = (lbIdx + dir + lbImgs.length) % lbImgs.length;
-  document.getElementById('lightbox-img').src = lbImgs[lbIdx];
+function galleryNav(dir) {
+  galleryIdx = (galleryIdx + dir + galleryList.length) % galleryList.length;
+  updateGallery();
+}
+function updateGallery() {
+  const p = galleryList[galleryIdx];
+  document.getElementById('gallery-img').src = p.src;
+  document.getElementById('gallery-caption-text').textContent = p.caption;
+  document.getElementById('gallery-counter-text').textContent = `${galleryIdx + 1} / ${galleryList.length}`;
 }
 document.addEventListener('keydown', e => {
-  if(document.getElementById('lightbox').style.display==='flex') {
-    if(e.key==='Escape') closeLightbox();
-    if(e.key==='ArrowRight') lightboxNav(1);
-    if(e.key==='ArrowLeft') lightboxNav(-1);
+  if (document.getElementById('gallery-lightbox').classList.contains('active')) {
+    if (e.key === 'Escape') closeGallery();
+    if (e.key === 'ArrowRight') galleryNav(1);
+    if (e.key === 'ArrowLeft') galleryNav(-1);
   }
 });
 </script>
