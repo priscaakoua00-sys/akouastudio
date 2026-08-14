@@ -104,7 +104,7 @@ html, body {
     <h2 class="section-title center">Eén ruimte,<br/><em>voor alles wat jij nodig hebt</em></h2>
     <div class="usage-grid">
       <div class="usage-card">
-        <img src="gebruik-ontvangst.jpg" alt="Klanten ontvangen bij Akoua Studio" loading="lazy" />
+        <img src="gebruik-ontvangst.jpg" alt="Klanten ontvangen bij Akoua Studio" loading="lazy" onclick="openGallery('werkplek')" />
         <div class="usage-card-body">
           <h3>Ontvang je klanten in alle privacy</h3>
           <p>Een rustige, stijlvolle ruimte waar je klanten zich op hun gemak voelen.</p>
@@ -112,7 +112,7 @@ html, body {
         </div>
       </div>
       <div class="usage-card">
-        <img src="gebruik-coaching.jpg" alt="Coaching en consult bij Akoua Studio" loading="lazy" />
+        <img src="gebruik-coaching.jpg" alt="Coaching en consult bij Akoua Studio" loading="lazy" onclick="openGallery('coaching')" />
         <div class="usage-card-body">
           <h3>Organiseer een coaching of consult</h3>
           <p>Een privé setting voor diepgaande gesprekken en zakelijke consults.</p>
@@ -120,7 +120,7 @@ html, body {
         </div>
       </div>
       <div class="usage-card">
-        <img src="gebruik-podcast.jpg" alt="Podcast opnemen bij Akoua Studio" loading="lazy" />
+        <img src="gebruik-podcast.jpg" alt="Podcast opnemen bij Akoua Studio" loading="lazy" onclick="openGallery('podcast')" />
         <div class="usage-card-body">
           <h3>Neem je podcast of content op</h3>
           <p>Een stille, professionele opstelling, klaar om direct op te nemen.</p>
@@ -128,7 +128,7 @@ html, body {
         </div>
       </div>
       <div class="usage-card">
-        <img src="gebruik-fotografie.jpg" alt="Foto's en video's maken bij Akoua Studio" loading="lazy" />
+        <img src="gebruik-fotografie.jpg" alt="Foto's en video's maken bij Akoua Studio" loading="lazy" onclick="openGallery('fotografie')" />
         <div class="usage-card-body">
           <h3>Creëer foto's of video's</h3>
           <p>3 achtergronden, ring light en softboxes, alles staat klaar.</p>
@@ -136,7 +136,7 @@ html, body {
         </div>
       </div>
       <div class="usage-card">
-        <img src="gebruik-workshop.jpg" alt="Vergaderen en workshops bij Akoua Studio" loading="lazy" />
+        <img src="gebruik-workshop.jpg" alt="Vergaderen en workshops bij Akoua Studio" loading="lazy" onclick="openGallery('meetings')" />
         <div class="usage-card-body">
           <h3>Vergader of geef een workshop</h3>
           <p>Tot 15 personen, groot scherm, volledige privacy.</p>
@@ -145,7 +145,7 @@ html, body {
       </div>
     </div>
     <div class="usage-gallery-cta">
-      <a href="#" class="btn-outline" onclick="event.preventDefault(); openGallery(0);">✦ Bekijk alle foto's van de studio</a>
+      <a href="#" class="btn-outline" onclick="event.preventDefault(); openGallery('all');">✦ Bekijk alle foto's van de studio</a>
     </div>
   </div>
 </section>
@@ -180,10 +180,11 @@ html, body {
       <p data-i18n="about_p1">Akoua Studio is een premium privéruimte in Roosendaal, beschikbaar per uur of per dag. Jij reserveert, je komt aan, en je gebruikt de ruimte precies zoals jij dat wilt.</p>
       <p data-i18n="about_p2">5 creatieve zones, professionele verlichting, VIP lounge, wifi en koffie inbegrepen. En vergeet onze grote glaswand niet: bij daglicht is de ruimte adembenemend mooi.</p>
       <a href="diensten.html#zones" class="btn-outline-sm" data-i18n="about_btn">Bekijk de Zones</a>
+      <a href="#" class="btn-outline-sm" onclick="event.preventDefault(); openGallery('all');">✦ Alle foto's</a>
     </div>
     <div class="about-right">
       <div class="about-photo-wrap">
-        <img class="about-photo" src="studio-overview.jpg" alt="Akoua Studio interieur" loading="lazy" />
+        <img class="about-photo" src="studio-overview.jpg" alt="Akoua Studio interieur" loading="lazy" onclick="openGallery('all')" />
         <div class="about-photo-badge">
           <span class="stat-num">5★</span>
           <span class="stat-label" data-i18n="stat_premium">PREMIUM</span>
@@ -607,6 +608,7 @@ html, body {
 ═══════════════════════════════════════════════ -->
 <div class="gallery-lightbox" id="gallery-lightbox">
   <button class="gallery-close" onclick="closeGallery()" aria-label="Sluiten">✕</button>
+  <div class="gallery-filters" id="gallery-filters"></div>
   <button class="gallery-nav gallery-prev" onclick="galleryNav(-1)" aria-label="Vorige">&lt;</button>
   <div class="gallery-lightbox-content">
     <img id="gallery-img" src="" alt="" />
@@ -653,26 +655,52 @@ html, body {
 <script src="js/main.js"></script>
 <script>
 const galleryPhotos = [
-  { src: 'gebruik-werkplek.jpg', caption: 'Werken in een professionele ruimte' },
-  { src: 'gebruik-ontvangst.jpg', caption: 'Klanten ontvangen in alle privacy' },
-  { src: 'gebruik-coaching.jpg', caption: 'Coaching & consult' },
-  { src: 'gebruik-podcast.jpg', caption: 'Podcast & content opnemen' },
-  { src: 'gebruik-fotografie.jpg', caption: "Foto's & video's maken" },
-  { src: 'gebruik-workshop.jpg', caption: 'Vergaderen & workshops' },
-  { src: 'studio-overview.jpg', caption: 'De studio in één oogopslag' },
-  { src: 'zone-lounge.jpg', caption: 'De Relax Lounge' },
-  { src: 'zone-studio.jpg', caption: 'Studio Photo & Video Zone' },
-  { src: 'zone-bureau-day.jpg', caption: 'Bureau & Présentation Zone' },
-  { src: 'zone-ambiance-night.jpg', caption: 'Ambiance Signature, \'s avonds' },
-  { src: 'zone-podcast-2.jpg', caption: 'Content Zone' },
-  { src: 'studio-collage-1.jpg', caption: 'Sfeerimpressie' },
-  { src: 'studio-collage-2.jpg', caption: 'Sfeerimpressie' },
+  { src: 'gebruik-werkplek.jpg', caption: 'Werken in een professionele ruimte', cat: 'werkplek' },
+  { src: 'gebruik-ontvangst.jpg', caption: 'Klanten ontvangen in alle privacy', cat: 'werkplek' },
+  { src: 'zone-bureau-day.jpg', caption: 'Bureau zone, overdag', cat: 'werkplek' },
+  { src: 'gebruik-coaching.jpg', caption: 'Coaching & consult', cat: 'coaching' },
+  { src: 'gebruik-podcast.jpg', caption: 'Podcast & content opnemen', cat: 'podcast' },
+  { src: 'zone-bureau-3.jpg', caption: 'Podcast opstelling, close-up', cat: 'podcast' },
+  { src: 'zone-podcast-1.jpg', caption: 'Content Zone, volledig zicht', cat: 'podcast' },
+  { src: 'zone-podcast-2.jpg', caption: 'Content Zone', cat: 'podcast' },
+  { src: 'gebruik-fotografie.jpg', caption: "Foto's & video's maken", cat: 'fotografie' },
+  { src: 'zone-studio.jpg', caption: 'Studio Photo & Video Zone', cat: 'fotografie' },
+  { src: 'zone-bureau-pro.jpg', caption: 'Portretshoot met studioverlichting', cat: 'fotografie' },
+  { src: 'gebruik-workshop.jpg', caption: 'Vergaderen & workshops', cat: 'meetings' },
+  { src: 'zone-events.jpg', caption: 'Opstelling voor events & workshops', cat: 'meetings' },
+  { src: 'zone-meeting.jpg', caption: 'Vergaderhoek met bureau', cat: 'meetings' },
+  { src: 'zone-lounge.jpg', caption: 'De Relax Lounge', cat: 'lounge' },
+  { src: 'zone-lounge-detail.jpg', caption: 'Relax Lounge, in detail', cat: 'lounge' },
+  { src: 'zone-detail.jpg', caption: 'Lounge hoek met bureau', cat: 'lounge' },
+  { src: 'studio-overview.jpg', caption: 'De studio in één oogopslag', cat: 'lounge' },
+  { src: 'studio-collage-1.jpg', caption: 'Sfeerimpressie', cat: 'lounge' },
+  { src: 'studio-collage-2.jpg', caption: 'Sfeerimpressie', cat: 'lounge' },
+  { src: 'zone-ambiance-night.jpg', caption: "Ambiance Signature, 's avonds", cat: 'lounge' },
+];
+const galleryCats = [
+  { key: 'all', label: "Alle foto's" },
+  { key: 'werkplek', label: 'Werken & Ontvangen' },
+  { key: 'coaching', label: 'Coaching' },
+  { key: 'podcast', label: 'Podcast' },
+  { key: 'fotografie', label: 'Fotografie' },
+  { key: 'meetings', label: 'Meetings & Events' },
+  { key: 'lounge', label: 'Lounge & Sfeer' },
 ];
 let galleryIdx = 0;
+let galleryList = galleryPhotos;
 
-function openGallery(startIdx) {
-  galleryIdx = startIdx || 0;
+document.getElementById('gallery-filters').innerHTML = galleryCats.map(c =>
+  `<button class="gallery-filter-btn" data-cat="${c.key}" onclick="setGalleryFilter('${c.key}')">${c.label}</button>`
+).join('');
+
+function setGalleryFilter(cat) {
+  galleryList = cat === 'all' ? galleryPhotos : galleryPhotos.filter(p => p.cat === cat);
+  galleryIdx = 0;
+  document.querySelectorAll('.gallery-filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
   updateGallery();
+}
+function openGallery(cat) {
+  setGalleryFilter(cat || 'all');
   document.getElementById('gallery-lightbox').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -681,14 +709,14 @@ function closeGallery() {
   document.body.style.overflow = '';
 }
 function galleryNav(dir) {
-  galleryIdx = (galleryIdx + dir + galleryPhotos.length) % galleryPhotos.length;
+  galleryIdx = (galleryIdx + dir + galleryList.length) % galleryList.length;
   updateGallery();
 }
 function updateGallery() {
-  const p = galleryPhotos[galleryIdx];
+  const p = galleryList[galleryIdx];
   document.getElementById('gallery-img').src = p.src;
   document.getElementById('gallery-caption-text').textContent = p.caption;
-  document.getElementById('gallery-counter-text').textContent = `${galleryIdx + 1} / ${galleryPhotos.length}`;
+  document.getElementById('gallery-counter-text').textContent = `${galleryIdx + 1} / ${galleryList.length}`;
 }
 document.addEventListener('keydown', e => {
   if (document.getElementById('gallery-lightbox').classList.contains('active')) {
