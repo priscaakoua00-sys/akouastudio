@@ -342,36 +342,60 @@ function toggleChat() {
 
 const chatAnswers = {
   nl: {
-    tarieven: '🌟 Essential €60 (1u) · Signature €170 (3u) · Full Day €399 (8u) · Pack Créateur €150',
-    reserveer: '📅 Klik op "Boeken" in het menu, kies je pakket en vul het formulier in.',
-    inbegrepen: '✅ Volledige studiotoegang · Professionele verlichting · Wifi & koffie · Alle 5 zones',
-    locatie: '📍 Keulsveld 17, kantoor 4 · 4705 RS Roosendaal · Gratis parkeren voor de deur',
-    betaling: '💳 Veilig via Mollie: iDEAL · Kaart · Apple Pay',
-    max: '👥 Max 10 personen voor events · 6-7 voor vergaderingen · 1-3 voor foto/video'
-  },
-  en: {
-    tarieven: '🌟 Essential €60 (1h) · Signature €170 (3h) · Full Day €399 (8h) · Pack Créateur €150',
-    reserveer: '📅 Click "Book" in the menu, choose your package and fill in the form.',
-    inbegrepen: '✅ Full studio access · Professional lighting · Wifi & coffee · All 5 zones',
-    locatie: '📍 Keulsveld 17, office 4 · 4705 RS Roosendaal · Free parking at the door',
-    betaling: '💳 Secure via Mollie: iDEAL · Card · Apple Pay',
-    max: '👥 Max 10 people for events · 6-7 for meetings · 1-3 for photo/video'
+    gebruik: "Heel veel eigenlijk. De studio is een flexibele, volledig privé ruimte waar je kunt werken, klanten ontvangen, foto's en video's maken, een podcast opnemen, of een meeting of kleine workshop houden. Je hebt de hele ruimte met 5 zones voor jezelf zodra je reserveert, dus je kunt het helemaal naar eigen inzicht gebruiken.",
+    keuze: 'Dat hangt vooral af van hoeveel tijd je nodig hebt. Voor een korte sessie van een uur is Essential (€60) ideaal. Heb je wat meer tijd nodig, bijvoorbeeld voor een fotoshoot of een langere opname, dan is Signature (€170, 3 uur) de populairste keuze. Voor een volledige dag is er Full Day (€399, 8 uur), inclusief lunch en snacks. En als je vooral content wilt maken voor social media, is het Pack Créateur (€150) speciaal daarvoor gemaakt. Vertel gerust wat je precies wilt doen, dan denk ik met je mee.',
+    klant: 'Ja, natuurlijk. Zodra je reserveert, is de studio volledig privé en exclusief van jou, er is geen gedeelde ruimte en geen wachtrij. Je kunt je klant dus in alle rust en professionaliteit ontvangen, zonder dat er iemand anders aanwezig is.',
+    podcast: 'Zeker, de studio heeft een aparte Content Zone die speciaal is ingericht voor podcasts en video content, inclusief verticale opstelling voor TikTok, Reels en YouTube. Alle pakketten geven toegang tot deze zone.',
+    fotovideo: "Ja, dat is zelfs een van de dingen waar de studio het meest voor gebruikt wordt. Er is een aparte Studio Photo & Video zone met verwisselbare achtergronden, ring light en softboxes, alles staat klaar. Als je vooral content voor social media wilt maken, is het Pack Créateur (€150) daar specifiek op gericht.",
+    personen: 'De studio biedt plaats aan maximaal 15 personen. Of je nu alleen komt werken of met een groep voor een meeting of workshop, de ruimte past zich aan jouw aantal aan.',
+    inbegrepen: 'Bij elk pakket krijg je volledige toegang tot de studio, professionele verlichting, wifi en koffie, en alle 5 zones. Bij Signature komt daar de VIP lounge bij, en bij Full Day ook nog koffie, thee, water, snacks en een lunch sandwich, zodat je de hele dag niets tekort komt.',
+    bezichtiging: 'Absoluut, dat kan zelfs gratis. Stuur ons een berichtje via WhatsApp om een vrijblijvende bezichtiging in te plannen, dan zie je de ruimte zelf voordat je iets boekt.',
+    parkeren: 'Parkeren is gratis en vlak voor de deur, op Keulsveld 17 in Roosendaal. Je hoeft je daar dus geen zorgen over te maken.',
+    snelheid: 'Heel snel. Kies gewoon het pakket dat bij je past, vul je gegevens en gewenste datum in, en je reservering staat direct vast na betaling. Meestal ben je in minder dan twee minuten klaar.',
+    tarieven: 'Onze tarieven zijn Essential €60 voor 1 uur, Signature €170 voor 3 uur, Full Day €399 voor een hele dag, en het Pack Créateur voor €150 als je vooral content wilt maken. Alle prijzen zijn inclusief btw.',
+    betaling: 'Betalen gaat volledig veilig via Mollie, met iDEAL, kaart of Apple Pay. Je rondt je reservering meteen af na het invullen van het formulier.'
   },
   fr: {
-    tarieven: '🌟 Essential €60 (1h) · Signature €170 (3h) · Full Day €399 (8h) · Pack Créateur €150',
-    reserveer: '📅 Cliquez sur "Réserver" dans le menu, choisissez votre forfait et remplissez le formulaire.',
-    inbegrepen: '✅ Accès complet au studio · Éclairage professionnel · Wifi & café · Les 5 zones',
-    locatie: '📍 Keulsveld 17, bureau 4 · 4705 RS Roosendaal · Parking gratuit à la porte',
-    betaling: '💳 Paiement sécurisé via Mollie: iDEAL · Carte · Apple Pay',
-    max: '👥 Max 10 personnes pour événements · 6-7 pour réunions · 1-3 pour photo/vidéo'
+    gebruik: "Beaucoup de choses en réalité. C'est un espace flexible et entièrement privé où vous pouvez travailler, recevoir des clients, faire des photos ou des vidéos, enregistrer un podcast, ou organiser une réunion ou un petit atelier. Dès que vous réservez, les 5 zones sont à vous, donc vous pouvez l'utiliser exactement comme vous le souhaitez.",
+    keuze: "Cela dépend surtout du temps dont vous avez besoin. Pour une courte session d'une heure, Essential (60€) est idéal. Si vous avez besoin d'un peu plus de temps, par exemple pour une séance photo ou un enregistrement plus long, Signature (170€, 3 heures) est le choix le plus populaire. Pour une journée complète, il y a Full Day (399€, 8 heures), déjeuner et collations inclus. Et si vous voulez surtout créer du contenu pour les réseaux sociaux, le Pack Créateur (150€) est fait pour ça. N'hésitez pas à me dire ce que vous voulez faire exactement, je peux vous orienter.",
+    klant: "Oui, bien sûr. Dès que vous réservez, le studio est entièrement privé et exclusivement à vous, il n'y a pas d'espace partagé ni d'attente. Vous pouvez donc recevoir votre client en toute tranquillité et professionnalisme, sans personne d'autre présent.",
+    podcast: 'Tout à fait, le studio a une Content Zone dédiée, spécialement aménagée pour les podcasts et le contenu vidéo, avec une configuration verticale pour TikTok, Reels et YouTube. Tous les forfaits donnent accès à cette zone.',
+    fotovideo: "Oui, c'est même l'un des usages les plus fréquents. Il y a une zone Studio Photo & Vidéo dédiée avec des fonds interchangeables, une ring light et des softboxes, tout est prêt à l'emploi. Si vous voulez surtout créer du contenu pour les réseaux sociaux, le Pack Créateur (150€) est pensé exactement pour ça.",
+    personen: "Le studio accueille jusqu'à 15 personnes. Que vous veniez seul(e) pour travailler ou en groupe pour une réunion ou un atelier, l'espace s'adapte à votre nombre.",
+    inbegrepen: "Chaque forfait inclut l'accès complet au studio, un éclairage professionnel, le wifi et le café, ainsi que les 5 zones. Avec Signature, la lounge VIP est incluse en plus, et avec Full Day, vous avez aussi café, thé, eau, collations et un sandwich pour le déjeuner, pour ne manquer de rien de la journée.",
+    bezichtiging: "Bien sûr, et c'est même gratuit. Envoyez-nous un message WhatsApp pour planifier une visite sans engagement, vous verrez l'espace par vous-même avant de réserver quoi que ce soit.",
+    parkeren: "Le parking est gratuit et juste devant la porte, au Keulsveld 17 à Roosendaal. Vous n'avez donc pas à vous en soucier.",
+    snelheid: "Très rapidement. Choisissez simplement le forfait qui vous convient, indiquez vos coordonnées et la date souhaitée, et votre réservation est confirmée directement après le paiement. En général, ça prend moins de deux minutes.",
+    tarieven: "Nos tarifs sont Essential 60€ pour 1 heure, Signature 170€ pour 3 heures, Full Day 399€ pour une journée complète, et le Pack Créateur à 150€ si vous voulez surtout créer du contenu. Tous les prix sont TTC.",
+    betaling: "Le paiement se fait de manière entièrement sécurisée via Mollie, par iDEAL, carte ou Apple Pay. Votre réservation est confirmée immédiatement après avoir rempli le formulaire."
+  },
+  en: {
+    gebruik: "Quite a lot, really. It's a flexible, fully private space where you can work, meet clients, take photos or shoot video, record a podcast, or hold a meeting or small workshop. Once you book, all 5 zones are yours, so you can use it exactly the way you want.",
+    keuze: "That mostly depends on how much time you need. For a short one-hour session, Essential (€60) is perfect. If you need a bit more time, for a photoshoot or a longer recording, Signature (€170, 3 hours) is the most popular choice. For a full day, there's Full Day (€399, 8 hours), lunch and snacks included. And if you mainly want to create social media content, the Pack Créateur (€150) is made exactly for that. Feel free to tell me what you're planning, I can help you figure out what fits.",
+    klant: "Yes, absolutely. Once you book, the studio is fully private and exclusively yours, there's no shared space and no waiting around. You can meet your client with complete peace of mind and professionalism, with no one else around.",
+    podcast: 'Definitely, the studio has a dedicated Content Zone set up specifically for podcasts and video content, with a vertical setup for TikTok, Reels and YouTube. Every package includes access to this zone.',
+    fotovideo: "Yes, it's actually one of the most common uses. There's a dedicated Studio Photo & Video zone with interchangeable backgrounds, a ring light and softboxes, everything is ready to go. If you're mainly creating content for social media, the Pack Créateur (€150) is built exactly for that.",
+    personen: "The studio fits up to 15 people. Whether you're coming alone to work or with a group for a meeting or workshop, the space adapts to your numbers.",
+    inbegrepen: "Every package includes full studio access, professional lighting, wifi and coffee, and all 5 zones. Signature also includes the VIP lounge, and Full Day adds coffee, tea, water, snacks and a lunch sandwich, so you're covered for the whole day.",
+    bezichtiging: "Of course, and it's free. Send us a message on WhatsApp to plan a no-obligation visit, so you can see the space for yourself before booking anything.",
+    parkeren: "Parking is free and right outside the door, at Keulsveld 17 in Roosendaal. So that's one less thing to worry about.",
+    snelheid: "Very fast. Just pick the package that suits you, fill in your details and preferred date, and your booking is confirmed right after payment. It usually takes less than two minutes.",
+    tarieven: "Our rates are Essential €60 for 1 hour, Signature €170 for 3 hours, Full Day €399 for a full day, and the Pack Créateur at €150 if you're mainly creating content. All prices include VAT.",
+    betaling: "Payment is fully secure through Mollie, via iDEAL, card or Apple Pay. Your booking is confirmed immediately after filling in the form."
   },
   es: {
-    tarieven: '🌟 Essential €60 (1h) · Signature €170 (3h) · Full Day €399 (8h) · Pack Créateur €150',
-    reserveer: '📅 Haz clic en "Reservar" en el menú, elige tu paquete y rellena el formulario.',
-    inbegrepen: '✅ Acceso completo al estudio · Iluminación profesional · Wifi & café · Las 5 zonas',
-    locatie: '📍 Keulsveld 17, oficina 4 · 4705 RS Roosendaal · Parking gratuito en la puerta',
-    betaling: '💳 Pago seguro via Mollie: iDEAL · Tarjeta · Apple Pay',
-    max: '👥 Máx 10 personas para eventos · 6-7 para reuniones · 1-3 para foto/vídeo'
+    gebruik: "Bastantes cosas, la verdad. Es un espacio flexible y totalmente privado donde puedes trabajar, recibir clientes, hacer fotos o grabar vídeo, grabar un podcast, o hacer una reunión o un pequeño taller. En cuanto reservas, las 5 zonas son tuyas, así que puedes usarlo exactamente como quieras.",
+    keuze: 'Depende sobre todo del tiempo que necesites. Para una sesión corta de una hora, Essential (60€) es perfecto. Si necesitas un poco más de tiempo, por ejemplo para una sesión de fotos o una grabación más larga, Signature (170€, 3 horas) es la opción más popular. Para un día completo está Full Day (399€, 8 horas), con almuerzo y snacks incluidos. Y si sobre todo quieres crear contenido para redes sociales, el Pack Créateur (150€) está pensado exactamente para eso. Cuéntame qué tienes en mente y te ayudo a elegir.',
+    klant: 'Sí, por supuesto. En cuanto reservas, el estudio es completamente privado y exclusivamente tuyo, no hay espacio compartido ni esperas. Puedes recibir a tu cliente con total tranquilidad y profesionalidad, sin nadie más presente.',
+    podcast: 'Claro que sí, el estudio tiene una Content Zone dedicada, preparada especialmente para podcasts y contenido en vídeo, con una configuración vertical para TikTok, Reels y YouTube. Todos los paquetes incluyen acceso a esta zona.',
+    fotovideo: 'Sí, de hecho es uno de los usos más frecuentes. Hay una zona Studio Photo & Vídeo dedicada con fondos intercambiables, ring light y softboxes, todo listo para usar. Si sobre todo quieres crear contenido para redes sociales, el Pack Créateur (150€) está pensado exactamente para eso.',
+    personen: 'El estudio tiene capacidad para hasta 15 personas. Ya vengas solo/a para trabajar o en grupo para una reunión o taller, el espacio se adapta a vuestro número.',
+    inbegrepen: 'Cada paquete incluye acceso completo al estudio, iluminación profesional, wifi y café, y las 5 zonas. Con Signature además tienes la lounge VIP, y con Full Day también café, té, agua, snacks y un sándwich para el almuerzo, para que no te falte nada en todo el día.',
+    bezichtiging: 'Claro, y además es gratis. Escríbenos por WhatsApp para planear una visita sin compromiso, así ves el espacio tú mismo/a antes de reservar nada.',
+    parkeren: 'El parking es gratuito y está justo en la puerta, en Keulsveld 17, Roosendaal. Así que no tienes que preocuparte por eso.',
+    snelheid: 'Muy rápido. Solo elige el paquete que te convenga, rellena tus datos y la fecha que prefieras, y tu reserva queda confirmada justo después del pago. Normalmente tarda menos de dos minutos.',
+    tarieven: 'Nuestras tarifas son Essential 60€ por 1 hora, Signature 170€ por 3 horas, Full Day 399€ por un día completo, y el Pack Créateur a 150€ si sobre todo quieres crear contenido. Todos los precios incluyen IVA.',
+    betaling: 'El pago es totalmente seguro a través de Mollie, con iDEAL, tarjeta o Apple Pay. Tu reserva queda confirmada justo después de rellenar el formulario.'
   }
 };
 
