@@ -1012,12 +1012,15 @@ section { padding: 6rem 0; }
   margin-bottom: 0.3rem;
 }
 .pack-content > div:first-child p { color: var(--white-dim); font-size: 0.85rem; }
-.pack-price {
-  text-align: center;
+.pack-desc-lg {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem !important;
+  font-weight: 600;
+  color: var(--white) !important;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  max-width: 480px;
 }
-.pack-price s { color: var(--white-dim); font-size: 0.85rem; display: block; }
-.pack-price span { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold); }
-.pack-price small { font-size: 0.7rem; color: var(--white-dim); }
 
 /* Add-ons */
 .addons { text-align: center; }
