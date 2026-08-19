@@ -1489,6 +1489,18 @@ section { padding: 6rem 0; }
 }
 .form-group textarea { resize: vertical; }
 
+.form-more { margin: 0.4rem 0 1.2rem; }
+.form-more summary {
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  cursor: pointer;
+  padding: 0.6rem 0;
+  list-style: none;
+}
+.form-more summary::-webkit-details-marker { display: none; }
+.form-more[open] summary { margin-bottom: 0.6rem; }
 .addons-check { margin: 1.2rem 0; }
 .addons-check .addon-check-title {
   font-family: 'Cinzel', serif;
