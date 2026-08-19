@@ -52,7 +52,6 @@
     <li><a href="index.html#studio">Studio</a></li>
     <li><a href="index.html#tarieven">Tarieven</a></li>
     <li><a href="diensten.html">Diensten</a></li>
-    <li><a href="diensten.html#reviews">Reviews</a></li>
     <li><a href="veelgestelde-vragen.html">FAQ</a></li>
     <li><a href="index.html#boeken" class="nav-cta">Boeken</a></li>
   </ul>
@@ -66,6 +65,7 @@
     <a href="https://wa.me/31627374813" target="_blank" class="btn-gold">📱 Boek via WhatsApp</a>
     <a href="index.html#tarieven" class="btn-outline">Bekijk tarieven</a>
   </div>
+  <a href="https://wa.me/31627374813?text=Hallo!%20Ik%20wil%20graag%20een%20gratis%20bezichtiging%20plannen." target="_blank" class="welcome-replay-link" style="justify-content:center;margin-top:16px;">Nog niet zeker? Plan eerst een gratis bezichtiging →</a>
 </section>
 
 <section class="intro-section">
@@ -180,7 +180,6 @@
       <a href="index.html#studio">Studio</a>
       <a href="index.html#tarieven">Tarieven</a>
       <a href="diensten.html">Diensten</a>
-      <a href="diensten.html#reviews">Reviews</a>
       <a href="veelgestelde-vragen.html">FAQ</a>
       <a href="index.html#boeken">Boeken</a>
     </div>
@@ -254,6 +253,18 @@
       if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
     });
   });
+</script>
+<a href="index.html#tarieven" class="float-book-btn" id="float-book-btn">✦ Bekijk beschikbaarheid</a>
+<script>
+  (function () {
+    var floatBtn = document.getElementById('float-book-btn');
+    var hero = document.querySelector('.page-hero');
+    if (floatBtn && hero) {
+      window.addEventListener('scroll', function () {
+        floatBtn.classList.toggle('visible', window.scrollY > hero.offsetHeight * 0.8);
+      }, { passive: true });
+    }
+  })();
 </script>
 </body>
 </html>
