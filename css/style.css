@@ -1330,15 +1330,36 @@ section { padding: 6rem 0; }
 }
 .footer-brand .logo-text { font-size: 2rem; }
 .footer-brand p { color: var(--white-dim); font-size: 0.85rem; margin: 1rem 0; max-width: 280px; }
-.footer-socials { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+.footer-socials { display: flex; gap: 0.7rem; flex-wrap: wrap; }
 .footer-socials a {
-  font-family: 'Cinzel', serif;
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--gold-border);
+  border-radius: 50%;
   color: var(--gold);
   transition: var(--transition);
 }
-.footer-socials a:hover { color: var(--gold-light); }
+.footer-socials a:hover { color: #0A0A0A; background: var(--gold); border-color: var(--gold); }
+.footer-socials svg { width: 17px; height: 17px; fill: currentColor; }
+
+.footer-call-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--gold-border);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  padding: 8px 16px;
+  border-radius: 2px;
+  transition: var(--transition);
+}
+.footer-call-btn:hover { background: var(--gold-glow); }
+.footer-call-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
 
 .footer-nav h4, .footer-contact h4 {
   font-family: 'Cinzel', serif;
