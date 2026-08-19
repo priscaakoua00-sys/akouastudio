@@ -349,6 +349,10 @@ html, body {
         <div class="addon-item"><span>🌅</span><strong data-i18n="addon_4">Vroeg Aankomen</strong><em>+€15</em></div>
       </div>
     </div>
+    <p style="text-align:center;margin-top:32px;font-size:0.85rem;color:var(--white-dim);">
+      <span data-i18n="tarief_wa_q">Twijfel je welk pakket het beste bij je past?</span>
+      <a href="https://wa.me/31627374813?text=Hallo!%20Ik%20heb%20een%20vraag%20over%20de%20pakketten%20van%20Akoua%20Studio." target="_blank" style="color:var(--gold);" data-i18n="tarief_wa_link">Stel je vraag via WhatsApp →</a>
+    </p>
   </div>
 </section>
 <section class="abonnement" id="abonnement">
@@ -562,10 +566,6 @@ html, body {
         <input type="email" id="form-email" placeholder="email@voorbeeld.nl" />
       </div>
       <div class="form-group">
-        <label data-i18n="form_tel">Telefoonnummer</label>
-        <input type="tel" id="form-tel" placeholder="+31 6 ..." />
-      </div>
-      <div class="form-group">
         <label data-i18n="form_date">Gewenste datum</label>
         <input type="date" id="form-date" />
       </div>
@@ -573,17 +573,24 @@ html, body {
         <label data-i18n="form_time">Gewenste tijd</label>
         <input type="time" id="form-time" />
       </div>
-      <div class="form-group">
-        <label data-i18n="form_msg">Vertel ons meer over jouw project</label>
-        <textarea id="form-msg" rows="3" placeholder="..."></textarea>
-      </div>
-      <div class="addons-check">
-        <p class="addon-check-title" data-i18n="addons_title">✦ ADD-ONS</p>
-        <label><input type="checkbox" value="Kit Welkom +€25" /> <span data-i18n="addon_1">Kit Welkom</span> +€25</label>
-        <label><input type="checkbox" value="Decoratie +€25" /> <span data-i18n="addon_2">Decoratie & Sfeer</span> +€25</label>
-        <label><input type="checkbox" value="Verleng 30min +€35" /> <span data-i18n="addon_3">Verleng 30 min</span> +€35</label>
-        <label><input type="checkbox" value="Vroeg Aankomen +€15" /> <span data-i18n="addon_4">Vroeg Aankomen</span> +€15</label>
-      </div>
+      <details class="form-more">
+        <summary data-i18n="form_more">+ Telefoon, bericht &amp; add-ons (optioneel)</summary>
+        <div class="form-group">
+          <label data-i18n="form_tel">Telefoonnummer</label>
+          <input type="tel" id="form-tel" placeholder="+31 6 ..." />
+        </div>
+        <div class="form-group">
+          <label data-i18n="form_msg">Vertel ons meer over jouw project</label>
+          <textarea id="form-msg" rows="3" placeholder="..."></textarea>
+        </div>
+        <div class="addons-check">
+          <p class="addon-check-title" data-i18n="addons_title">✦ ADD-ONS</p>
+          <label><input type="checkbox" value="Kit Welkom +€25" /> <span data-i18n="addon_1">Kit Welkom</span> +€25</label>
+          <label><input type="checkbox" value="Decoratie +€25" /> <span data-i18n="addon_2">Decoratie & Sfeer</span> +€25</label>
+          <label><input type="checkbox" value="Verleng 30min +€35" /> <span data-i18n="addon_3">Verleng 30 min</span> +€35</label>
+          <label><input type="checkbox" value="Vroeg Aankomen +€15" /> <span data-i18n="addon_4">Vroeg Aankomen</span> +€15</label>
+        </div>
+      </details>
       <button class="btn-gold-full" onclick="submitBooking()" data-i18n="confirm_pay">✦ BEVESTIGEN & BETALEN →</button>
       <p class="modal-payment" data-i18n="payment_info">Veilige betaling via Mollie · iDEAL · Kaart · Apple Pay</p>
       <p class="modal-wa">Vragen? <a href="https://wa.me/31627374813" target="_blank">WhatsApp 06 27 37 48 13</a></p>
